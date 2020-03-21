@@ -21,6 +21,12 @@ public class GardenSlot : MonoBehaviour
 
     public void plantSeed()
     {
+        if (seedPlanted)
+        {
+            return;
+        }
+
         Instantiate(selectedPlant, transform);
+        seedPlanted = true;
     }
 }
