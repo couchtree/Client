@@ -1,25 +1,19 @@
 using System;
-using System.Runtime.Serialization;
 using Interfaces;
 
 namespace Models
 {
-    public class Player: Saveable, PlayerInterface
+    public class Player : Saveable, PlayerInterface
     {
-        public const String filename = "player"; 
-        
+        public const String filename = "player";
+
         public string Name { get; set; }
         public long lat { get; set; }
         public long lon { get; set; }
-        
-        public override ISerializable GenerateSaveableData()
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public override void LoadFromSerializedData(DataForSerialization dataForSerialization)
+        public override DataForSerialization GenerateSaveableData()
         {
-            throw new System.NotImplementedException();
+            return new PlayerData(this);
         }
     }
 }

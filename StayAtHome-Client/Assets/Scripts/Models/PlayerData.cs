@@ -9,6 +9,7 @@ namespace Models
         public String playerName;
         public long lat;
         public long lon;
+        private PlayerInterface playerObject;
 
         public string getFilename()
         {
@@ -20,6 +21,14 @@ namespace Models
             this.playerName = player.Name;
             this.lat = player.lat;
             this.lon = player.lon;
+            this.playerObject = player;
+        }
+
+        public void loadFromData()
+        {
+            this.playerObject.Name = this.playerName;
+            this.playerObject.lat = this.lat;
+            this.playerObject.lon = this.lon;
         }
     }
 }
