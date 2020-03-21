@@ -1,4 +1,5 @@
 using Core.Interfaces;
+using Core.Models;
 
 namespace Core.Garden
 {
@@ -6,7 +7,7 @@ namespace Core.Garden
     {
         public IDataForSerialization GenerateSaveableData()
         {
-            throw new System.NotImplementedException();
+            return new PlantData(this);
         }
 
         public int GetEvolutionLevel()

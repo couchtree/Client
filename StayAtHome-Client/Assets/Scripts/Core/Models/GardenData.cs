@@ -1,3 +1,4 @@
+using Core.Garden;
 using Core.Interfaces;
 
 namespace Core.Models
@@ -14,7 +15,7 @@ namespace Core.Models
             throw new System.NotImplementedException();
         }
 
-        public GardenData(Garden.Garden garden)
+        public GardenData(MyGarden myGarden)
         {
         }
     }

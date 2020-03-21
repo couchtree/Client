@@ -37,9 +37,9 @@ namespace Managers
 
         public static IDataForSerialization LoadGarden()
         {
-            if (File.Exists(GetSavePath(Garden.filename)))
+            if (File.Exists(GetSavePath(MyGarden.filename)))
             {
-                FileStream stream = new FileStream(GetSavePath(Garden.filename), FileMode.Open);
+                FileStream stream = new FileStream(GetSavePath(MyGarden.filename), FileMode.Open);
                 GardenData gardenData = GetBinaryFormatter().Deserialize(stream) as GardenData;
                 stream.Close();
 

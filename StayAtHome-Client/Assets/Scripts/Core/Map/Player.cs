@@ -10,10 +10,10 @@ namespace Core.Map
     {
         public const String filename = "player";
         
-        [HideInInspector] 
+        [HideInInspector]
         public string name;
         
-        [HideInInspector] 
+        [HideInInspector]
         public float distance;
 
         public string Name { get; set; }
