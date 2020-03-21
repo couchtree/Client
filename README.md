@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/stayathome1761/Client.svg?branch=master)](https://travis-ci.com/stayathome1761/Client)
+
 # Client
 
 
