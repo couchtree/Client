@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.Map;
 
 namespace Core.Global
 {
@@ -13,13 +14,32 @@ namespace Core.Global
         public event AddBehavior AddBehaviorEvent;
         public event SubtractBehavior SubtractBehaviorEvent;
 
+        public Player player; // Player which counts the score.
+
         private int _prevEvent;
 
         public int BehaviorPoints { get; private set; }
 
+        private void OnStart()
+        {
+            if (player == null)
+            {
+                player = GetComponent<Player>();
+                if (player == null)
+                {
+                    Debug.LogError("No player assigned!");
+                }
+                else
+                {
+                    Debug.LogWarning("Retrieve player from gameobject.");
+                }
+
+            }
+        }
+
         public void AddPoints(int bonusAmount)
         {
-            this.BehaviorPoints += bonusAmount;
+            player.score += bonusAmount;
             AddBehaviorEvent?.Invoke();
 
             _prevEvent = 1;
@@ -27,7 +47,7 @@ namespace Core.Global
 
         public void SubtractPoints(int penaltyAmount)
         {
-            this.BehaviorPoints -= penaltyAmount;
+            player.score -= penaltyAmount;
             SubtractBehaviorEvent?.Invoke();
 
             _prevEvent = -1;
