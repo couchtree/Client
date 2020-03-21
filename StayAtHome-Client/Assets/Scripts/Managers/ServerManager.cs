@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
-namespace Manager
+namespace Managers
 {
     public class ServerManager : MonoBehaviour
     {
