@@ -11,7 +11,6 @@ namespace Managers
 {
     public class ServerManager : MonoBehaviour
     {
-
         private TcpClient socketConnection;
         private Thread clientReceiveThread;
 
@@ -70,8 +69,6 @@ namespace Managers
             {
                 Debug.Log("Socket exception: " + socketException);
             }
-
-            return message;
         }
 
         public void Send(object data)

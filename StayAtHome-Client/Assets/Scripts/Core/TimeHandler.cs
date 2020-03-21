@@ -27,25 +27,27 @@ public class ServerReturn : Object
 
 public class TimeHandler : MonoBehaviour
 {
-    public GPS_Tracking gps;
-    public ServerManager server;
+    private GPS_Tracking gps;
+    private ServerManager server;
 
     [Range(0.0f, 100.0f)]
-    public float maxDistanceFromHome; // Distance from home in meters
+    public float maxDistanceFromHome = 10.0f; // Distance from home [m]
 
     private bool isInitialized = false;
 
     private float nextActionTime = 0.0f;
-    public float period = 0.1f;
+    public float period = 0.1f; // [s]
 
     // Start is called before the first frame update
     void Start()
     {
         // Aquire Server Connect utility class
+        server = GetComponent<ServerManager>();
         if (server == null)
         {
             Debug.LogError("No ServerManager found");
         }
+        gps = GetComponent<GPS_Tracking>();
         if (gps == null)
         {
             Debug.LogError("No GPS_Tracking found.");
