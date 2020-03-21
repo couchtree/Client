@@ -65,7 +65,6 @@ public class TimeHandler : MonoBehaviour
     {
         if (Time.time > nextActionTime && isInitialized)  
         {
-            info.SetText("Send Request");
             nextActionTime += period;
             RequestUpdate();
         }
@@ -79,7 +78,7 @@ public class TimeHandler : MonoBehaviour
         request.lon = gps.GetLongitude();
         request.at_home = player.AtHomeBase(request.lat, request.lon);
         request.tracked = true;
-        request.timestamp = (int)(System.DateTime.UtcNow.Subtract(new System.DateTime(1970, 1, 1)).TotalSeconds);
+        // request.timestamp = (int)(System.DateTime.UtcNow.Subtract(new System.DateTime(1970, 1, 1)).TotalSeconds); TODO Enable as soon as backend is ready
 
         // Send message to server
         server.SendRequest(JsonUtility.ToJson(request), responseDelegate);

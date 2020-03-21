@@ -24,11 +24,6 @@ namespace Managers
             
             deviceID = GetSHA512(GetNetworkInterfaces());
             Debug.Log("DeviceID: " + deviceID);
-            
-            responseDelegate = handleRespone;
-
-            // HTTP Test
-            HTTPManager.Instance.SendRequest("{\"test\":\"djhgfusdhufg\"}", responseDelegate);
         }
 
         public string GetNetworkInterfaces()
@@ -76,11 +71,6 @@ namespace Managers
             }
          
             return strBuilder.ToString();
-        }
-    
-        public void handleRespone(string response)
-        {
-            Debug.Log("Response from Server: " + response);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Managers
     {
         public float lat;
         public float lon;
-        public int timestamp; // UNIX Timestamp
+        // public int timestamp; // UNIX Timestamp TODO: un-comment as soon as backend is ready for it
         public bool at_home;
         public bool tracked;
 
@@ -51,7 +51,8 @@ namespace Managers
 
         public void SendRequest(string requestJson, ServerResponse response)
         {
-            var url = "https://prooxey.de/endpoint.php";
+            // var url = "https://prooxey.de/endpoint.php";
+            var url = "https://creative-two.com/api/v1/player/" + SystemInfo.deviceUniqueIdentifier + "/location/"; // uuid must be exchanged by the uuid of the player
 
             StartCoroutine(PostRequest(url, requestJson, response));
         }

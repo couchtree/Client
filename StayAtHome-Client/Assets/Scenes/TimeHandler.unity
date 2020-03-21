@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20ef67551d3e4811a4fbbef7d439084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 708964880}
+  info: {fileID: 0}
 --- !u!114 &972367343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc24a503f1e2314e9ff199c8f6ebba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 230249396}
+  info: {fileID: 708964880}
   maxDistanceFromHome: 10
   period: 0.1
 --- !u!114 &972367345
@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e496e3900cfee474d80e45ccf510b25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1255624372
 GameObject:
   m_ObjectHideFlags: 0
