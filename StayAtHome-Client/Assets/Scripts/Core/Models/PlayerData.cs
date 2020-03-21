@@ -1,7 +1,8 @@
 ﻿using System;
-using Interfaces;
+using Core.Map;
+using Core.Interfaces;
 
-namespace Models
+namespace Core.Models
 {
     [Serializable]
     public class PlayerData : DataForSerialization
@@ -15,7 +16,7 @@ namespace Models
 
         public string getFilename()
         {
-            return "player";
+            return Player.filename;
         }
 
         public PlayerData(PlayerInterface player)
