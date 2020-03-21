@@ -39,7 +39,7 @@ namespace Core.Global
 
         public void AddPoints(int bonusAmount)
         {
-            player.score += bonusAmount;
+            player.ChangeScore(bonusAmount);
             AddBehaviorEvent?.Invoke();
 
             _prevEvent = 1;
@@ -47,7 +47,7 @@ namespace Core.Global
 
         public void SubtractPoints(int penaltyAmount)
         {
-            player.score -= penaltyAmount;
+            player.ChangeScore(-penaltyAmount);
             SubtractBehaviorEvent?.Invoke();
 
             _prevEvent = -1;
