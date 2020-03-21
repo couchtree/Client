@@ -1,23 +1,11 @@
-using System;
-using UnityEngine;
+using System.Runtime.Serialization;
 
 namespace Interfaces
 {
     public abstract class Saveable
     {
-        protected String SavegameName = "changeMe";
+        public abstract ISerializable GenerateSaveableData();
 
-        protected Saveable()
-        {
-            if (this.SavegameName == "changeMe")
-            {
-                Debug.LogError("You did not change the name of the Class for savegame Stuff!");
-            }
-        }
-
-        public String GetSavegameName()
-        {
-            return this.SavegameName;
-        }
+        public abstract void LoadFromSerializedData(DataForSerialization dataForSerialization);
     }
 }

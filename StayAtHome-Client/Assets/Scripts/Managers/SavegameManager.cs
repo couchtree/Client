@@ -9,39 +9,38 @@ namespace Managers
 {
     public static class SavegameManager
     {
-        public static void SavePlayer(PlayerInterface player)
+        public static void Save(Saveable toSave, DataForSerialization dataForSerialization)
         {
-            FileStream stream = new FileStream(GetSavePath(), FileMode.Create);
+            FileStream stream = new FileStream(GetSavePath(dataForSerialization.getFilename()), FileMode.Create);
 
-            PlayerData data = new PlayerData(player);
-            GetBinaryFormatter().Serialize(stream, data);
+            GetBinaryFormatter().Serialize(stream, toSave.GenerateSaveableData());
             stream.Close();
         }
 
-        private static BinaryFormatter GetBinaryFormatter()
+        public static DataForSerialization LoadPlayer()
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            return formatter;
-        }
-
-        public static PlayerData LoadPlayerData()
-        {
-            if (File.Exists(GetSavePath()))
+            if (File.Exists(GetSavePath(Player.filename)))
             {
-                FileStream stream = new FileStream(GetSavePath(), FileMode.Open);
+                FileStream stream = new FileStream(GetSavePath(Player.filename), FileMode.Open);
                 PlayerData playerData = GetBinaryFormatter().Deserialize(stream) as PlayerData;
                 stream.Close();
 
                 return playerData;
             }
 
-            Debug.LogError("No Savegame found! Save first once");
+            Debug.LogError("No player savegame found! Save first once");
             return null;
         }
 
-        public static String GetSavePath()
+        public static String GetSavePath(String fileName)
         {
-            return Application.persistentDataPath + "/savegame.stay";
+            return Application.persistentDataPath + "/" + fileName + ".stay";
+        }
+
+        private static BinaryFormatter GetBinaryFormatter()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            return formatter;
         }
     }
 }

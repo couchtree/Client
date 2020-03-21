@@ -4,12 +4,16 @@ using Interfaces;
 namespace Models
 {
     [Serializable]
-    public class PlayerData : Saveable
+    public class PlayerData : DataForSerialization
     {
-        protected new String SavegameName = "player";
         public String playerName;
         public long lat;
         public long lon;
+
+        public string getFilename()
+        {
+            return "player";
+        }
 
         public PlayerData(PlayerInterface player)
         {
