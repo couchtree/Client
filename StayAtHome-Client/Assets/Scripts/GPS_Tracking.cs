@@ -10,23 +10,19 @@ using UnityEngine.Android;
 
 public class GPS_Tracking : MonoBehaviour
 {
-
-    [SerializeField]
-    TextMeshProUGUI info; //Remove
+    [SerializeField] TextMeshProUGUI info; //Remove
 
     float latitude, longitude;
 
     private void Start()
     {
-   
         StartCoroutine(CheckForGPSAccess());
-        
     }
 
 
     IEnumerator CheckForGPSAccess()
     {
-    #if PLATFORM_ANDROID
+#if PLATFORM_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
             Debug.Log("GPS is needed. Please allow Location access");
@@ -44,13 +40,9 @@ public class GPS_Tracking : MonoBehaviour
         {
             StartCoroutine(InitializeGPS());
         }
-
-
-
-    #endif
-
+#endif
+        throw new System.NotImplementedException();
     }
-
 
 
     IEnumerator InitializeGPS()
@@ -85,6 +77,7 @@ public class GPS_Tracking : MonoBehaviour
             Debug.Log("Timed out");
             yield break;
         }
+
         // Connection has failed
         if (Input.location.status == LocationServiceStatus.Failed)
         {
@@ -96,14 +89,14 @@ public class GPS_Tracking : MonoBehaviour
             // Access granted and location value could be retrieved
             SetLatAndLong();
             Debug.Log("Latitude: " + GetLatitude().ToString() + "\n Longitude: " + GetLongitude().ToString());
-            info.SetText("Latitude: " + GetLatitude().ToString() + "\n Longitude: " + GetLongitude().ToString());//Remove
-           
+            info.SetText("Latitude: " + GetLatitude().ToString() + "\n Longitude: " +
+                         GetLongitude().ToString()); //Remove
+
             // Stop service if there is no need to query location updates continuously
             Input.location.Stop();
         }
-
-      
     }
+
     void SetLatAndLong()
     {
         latitude = Input.location.lastData.latitude;
