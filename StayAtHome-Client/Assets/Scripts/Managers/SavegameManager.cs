@@ -2,8 +2,9 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Interfaces;
-using Models;
+using Core.Map;
+using Core.Interfaces;
+using Core.Models;
 
 namespace Managers
 {

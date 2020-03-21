@@ -1,6 +1,6 @@
 using System;
 
-namespace Interfaces
+namespace Core.Interfaces
 {
     public interface DataForSerialization
     {

@@ -1,4 +1,4 @@
-namespace Interfaces
+namespace Core.Interfaces
 {
     public interface PlayerInterface
     {
