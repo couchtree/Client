@@ -22,6 +22,9 @@ namespace Managers
             
             deviceID = GetSHA512(GetNetworkInterfaces());
             Debug.Log("DeviceID: " + deviceID);
+            
+            // HTTP Test
+            HTTPManager.Instance.SendRequest("{\"test\":\"djhgfusdhufg\"}");
         }
 
         public string GetNetworkInterfaces()
