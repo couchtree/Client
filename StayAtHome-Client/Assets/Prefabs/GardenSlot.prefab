@@ -142,8 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0472f1640c61bb4fb3af3d595598577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedPlant: {fileID: 5042851319078484216, guid: ed96798480e80ce4e9bc9d4dee1653c9,
-    type: 3}
+  seedImage: {fileID: 21300000, guid: 45be5f5f1dc4fa145910b06fda351a53, type: 3}
   seedPlanted: 0
 --- !u!1 &4822160954171472258
 GameObject:
@@ -235,5 +234,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0472f1640c61bb4fb3af3d595598577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedPlant: {fileID: 0}
+  seedImage: {fileID: 0}
   seedPlanted: 0

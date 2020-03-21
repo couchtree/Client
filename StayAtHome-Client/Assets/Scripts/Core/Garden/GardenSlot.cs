@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Core.Garden;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GardenSlot : MonoBehaviour
 {
-    public GameObject selectedPlant;
+    [Header("Planting Images")]
+    public Sprite seedImage;
 
+    [Header("internal")]
     public bool seedPlanted;
+
+    protected Image buttonImage;
 
     // Start is called before the first frame update
     void Start()
     {
+        Button button = GetComponent<Button>();
+        this.buttonImage = button.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -26,7 +31,8 @@ public class GardenSlot : MonoBehaviour
             return;
         }
 
-        Instantiate(selectedPlant, transform);
+        gameObject.AddComponent<NormalPlant>();
+        this.buttonImage.sprite = this.seedImage;
         seedPlanted = true;
     }
 }
