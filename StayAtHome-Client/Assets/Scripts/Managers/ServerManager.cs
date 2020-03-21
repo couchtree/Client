@@ -11,7 +11,6 @@ namespace Managers
 {
     public class ServerManager : MonoBehaviour
     {
-
         private TcpClient socketConnection;
         private Thread clientReceiveThread;
 
@@ -39,8 +38,9 @@ namespace Managers
             }
         }
 
-        private void Listen()
+        public void Listen()
         {
+            string message = "";
             try
             {
                 socketConnection = new TcpClient("127.0.0.1", 1337);
@@ -56,7 +56,7 @@ namespace Managers
                         var data = new byte[length];
                         Array.Copy(bytes, 0, data, 0, length);
 
-                        string message = Encoding.ASCII.GetString(data);
+                        message = Encoding.ASCII.GetString(data);
                         Debug.Log(message);
                     }
                 }
@@ -71,7 +71,7 @@ namespace Managers
             }
         }
 
-        private void Send(object data)
+        public void Send(object data)
         {
             if (socketConnection != null)
             {

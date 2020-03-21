@@ -23,7 +23,7 @@ namespace Core.Global
             AddBehaviorEvent?.Invoke();
 
             _prevEvent = 1;
-    }
+        }
 
         public void SubtractPoints(int penaltyAmount)
         {

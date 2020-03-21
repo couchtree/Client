@@ -11,7 +11,7 @@ namespace Core.Map
         public const String filename = "player";
 
         [HideInInspector]
-        public string name;
+        new public string name;
 
         [HideInInspector]
         public float distance;
