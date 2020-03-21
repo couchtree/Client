@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Core.Map
 {
-    public class Player : MonoBehaviour, Saveable, PlayerInterface
+    public class Player : MonoBehaviour, Saveable
     {
         public const String filename = "player";
         

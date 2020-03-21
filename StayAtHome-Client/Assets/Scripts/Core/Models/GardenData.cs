@@ -13,5 +13,9 @@ namespace Core.Models
         {
             throw new System.NotImplementedException();
         }
+
+        public GardenData(Garden.Garden garden)
+        {
+        }
     }
 }
