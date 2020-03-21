@@ -35,7 +35,7 @@ namespace Managers
             responseDelegate = handleRespone;
 
             // HTTP Test
-            HTTPManager.Instance.SendRequest("{\"test\":\"djhgfusdhufg\"}", responseDelegate);
+            //HTTPManager.Instance.SendRequest("{\"test\":\"djhgfusdhufg\"}", responseDelegate);
         }
 
         public string GetNetworkInterfaces()
