@@ -16,10 +16,6 @@ namespace Core.Global
 
         public Player player; // Player which counts the score.
 
-        private int _prevEvent;
-
-        public int BehaviorPoints { get; private set; }
-
         private void OnStart()
         {
             if (player == null)
@@ -41,16 +37,12 @@ namespace Core.Global
         {
             player.ChangeScore(bonusAmount);
             AddBehaviorEvent?.Invoke();
-
-            _prevEvent = 1;
         }
 
         public void SubtractPoints(int penaltyAmount)
         {
             player.ChangeScore(-penaltyAmount);
             SubtractBehaviorEvent?.Invoke();
-
-            _prevEvent = -1;
         }
     }
 }

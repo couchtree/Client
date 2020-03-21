@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Managers;
 using TMPro;
@@ -8,9 +9,6 @@ using Core.Map;
 
 public class TimeHandler : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI info; // Only for debugging
-
     private GPS_Tracking gps;
     private HTTPManager server;
 
@@ -35,25 +33,21 @@ public class TimeHandler : MonoBehaviour
         if (server == null)
         {
             Debug.LogError("No ServerManager found");
-            info.SetText("No ServerManager found");
         }
         gps = GetComponent<GPS_Tracking>();
         if (gps == null)
         {
             Debug.LogError("No GPS_Tracking found.");
-            info.SetText("No GPS_Tracking found.");
         }
         playerBehavior = GetComponent<PlayerBehavior>();
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
-            info.SetText("No PlayerBehavior found.");
         }
         player = GetComponent<Player>();
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
-            info.SetText("No PlayerBehavior found.");
         }
         responseDelegate = HandleServerRequest;
 
@@ -86,11 +80,19 @@ public class TimeHandler : MonoBehaviour
 
     private void HandleServerRequest(string response)
     {
-        Debug.Log("Response is: " + response);
-        info.SetText("Response is:" + response); //TODO Remove
-        PostResponse responses =  JsonUtility.FromJson<PostResponse>(response);
+        //Debug.Log("Response is: " + response);  // TODO remove
+        PostResponse responses;
+        try
+        {
+            responses =  JsonUtility.FromJson<PostResponse>(response);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Failed to serialize message: '" + response +  "' with error: '" + ex.Message + "'");
+            return;
+        }
         // Decide on response according to answer from server
-        if (responses.responseElements[0].dist > maxDistanceFromHome)
+        if (responses.nearby_players[0].dist > maxDistanceFromHome)
         {
             playerBehavior.SubtractPoints(10);
         }

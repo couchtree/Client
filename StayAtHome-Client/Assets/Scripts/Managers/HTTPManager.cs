@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 namespace Managers
 {
     
-    // Class representing the Request Body of the Backend-API for POST
+    // Struct representing the Request Body of the Backend-API for POST
     public struct PostRequest
     {
         public float lat;
@@ -22,6 +22,7 @@ namespace Managers
         }
     }
 
+    // Struct representing the Response element i.e. a nearby player of the Backend-Api for POST
     public struct PostResponseElement
     {
         public int dir; // -> enum [0:"n",1:"ne",2:"e",3:"se",4:"s",5:"sw",6:"w",7:"nw"]
@@ -30,13 +31,15 @@ namespace Managers
 
         public static PostResponseElement CreateFromJSON(string jsonString)
         {
+            Debug.Log("Trying to desirealize: '" + jsonString + "'");
             return JsonUtility.FromJson<PostResponseElement>(jsonString);
         }
     }
-    // Class representing the Response Body-Element of the Backend-API for POST
-    public class PostResponse : MonoBehaviour
+
+    // Struct representing the Response Body-Element of the Backend-API for POST
+    public struct PostResponse
     {
-        public List<PostResponseElement> responseElements; // List of up PostResponseElements each for another player
+        public List<PostResponseElement> nearby_players; // List of up nearby_players
 
         public static PostResponse CreateFromJSON(string jsonString)
         {
@@ -44,21 +47,28 @@ namespace Managers
         }
     }
 
+
     public class HTTPManager : Singleton<HTTPManager>
     {
         public delegate void ServerResponse(string response);
 
+        private string uuid;
 
         public void SendRequest(string requestJson, ServerResponse response)
         {
-            // var url = "https://prooxey.de/endpoint.php";
-            var url = "https://creative-two.com/api/v1/player/" + SystemInfo.deviceUniqueIdentifier + "/location/"; // uuid must be exchanged by the uuid of the player
+            if (uuid == null)
+            {
+                uuid = System.Guid.NewGuid().ToString();
+                Debug.Log("Generated UUID: '" + uuid + "'");
+            }
+            var url = "https://creative-two.com/api/v1/player/" + uuid + "/location/";
 
             StartCoroutine(PostRequest(url, requestJson, response));
         }
 
         IEnumerator PostRequest(string url, string json, ServerResponse response)
         {
+            Debug.Log("Sending to url: '" + url + "'\nMessage: '" + json + "'");
             var uwr = new UnityWebRequest(url, "POST");
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
             uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
@@ -70,12 +80,11 @@ namespace Managers
             if (uwr.isNetworkError)
             {
                 response(uwr.error);
-                Debug.Log("Error While Sending: " + uwr.error);
+                Debug.LogError("Error while Sending: " + uwr.error);
             }
             else
             {
                 response(uwr.downloadHandler.text);
-                Debug.Log("Received: " + uwr.downloadHandler.text);
             }
         }
 
