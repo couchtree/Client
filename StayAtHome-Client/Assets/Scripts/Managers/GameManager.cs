@@ -6,7 +6,6 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
-
 namespace Managers
 {
     public class GameManager : Singleton<GameManager>
@@ -17,19 +16,14 @@ namespace Managers
             base.Awake();
         }
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
+            Screen.orientation = ScreenOrientation.Portrait;
+            
             deviceID = GetSHA512(GetNetworkInterfaces());
             Debug.Log("DeviceID: " + deviceID);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
-        
         public string GetNetworkInterfaces()
         {
             IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
