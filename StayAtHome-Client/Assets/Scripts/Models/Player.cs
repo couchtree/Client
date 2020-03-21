@@ -12,6 +12,7 @@ namespace Models
         public string Name { get; set; }
         public long lat { get; set; }
         public long lon { get; set; }
+        public int score { get; set; }
 
         public DataForSerialization GenerateSaveableData()
         {
@@ -23,6 +24,10 @@ namespace Models
         {
             //just to test compiling
             SavegameManager.Save(this,this.GenerateSaveableData());
-        }        
+        }
+        public void ChangeScore(int amount)
+        {
+            score += amount;
+        }
     }
 }
