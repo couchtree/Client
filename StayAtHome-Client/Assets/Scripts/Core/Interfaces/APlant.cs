@@ -1,8 +1,9 @@
 using System;
+using UnityEngine;
 
 namespace Core.Interfaces
 {
-    public abstract class APlant
+    public abstract class APlant: MonoBehaviour
     {
         public int EvolutionLevel;
 
