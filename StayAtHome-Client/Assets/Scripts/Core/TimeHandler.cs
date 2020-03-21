@@ -4,6 +4,7 @@ using UnityEngine;
 using Managers;
 using TMPro;
 using Core.Global;
+using Core.Map;
 
 public class TimeHandler : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class TimeHandler : MonoBehaviour
 
     private GPS_Tracking gps;
     private HTTPManager server;
+
+    private Player player;
 
     private PlayerBehavior playerBehavior;
 
@@ -46,6 +49,13 @@ public class TimeHandler : MonoBehaviour
             Debug.LogError("No PlayerBehavior found.");
             info.SetText("No PlayerBehavior found.");
         }
+        player = GetComponent<Player>();
+        if (playerBehavior == null)
+        {
+            Debug.LogError("No PlayerBehavior found.");
+            info.SetText("No PlayerBehavior found.");
+        }
+        responseDelegate = HandleServerRequest;
 
         isInitialized = true;
     }
@@ -67,6 +77,7 @@ public class TimeHandler : MonoBehaviour
         PostRequest request = new PostRequest();
         request.lat = gps.GetLatitude();
         request.lon = gps.GetLongitude();
+        request.at_home = player.AtHomeBase(request.lat, request.lon);
 
         // Send message to server
         server.SendRequest(JsonUtility.ToJson(request), responseDelegate);

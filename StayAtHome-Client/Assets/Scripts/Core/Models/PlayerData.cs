@@ -8,8 +8,8 @@ namespace Core.Models
     public class PlayerData : IDataForSerialization
     {
         public String playerName;
-        public long lat;
-        public long lon;
+        public float lat;
+        public float lon;
 
         [NonSerialized] private Player _playerObject;
 
