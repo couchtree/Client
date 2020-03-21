@@ -1,7 +1,3 @@
-using System.CodeDom;
-using Boo.Lang;
-using Models;
-
 namespace Interfaces
 {
     public interface PlayerInterface
