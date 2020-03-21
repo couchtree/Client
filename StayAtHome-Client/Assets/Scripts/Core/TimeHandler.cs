@@ -87,7 +87,7 @@ public class TimeHandler : MonoBehaviour
     private void HandleServerRequest(string response)
     {
         Debug.Log("Response is: " + response);
-        info.SetText("Response is:" + response); //Remove
+        info.SetText("Response is:" + response); //TODO Remove
         PostResponse responses =  JsonUtility.FromJson<PostResponse>(response);
         // Decide on response according to answer from server
         if (responses.responseElements[0].dist > maxDistanceFromHome)
