@@ -78,6 +78,8 @@ public class TimeHandler : MonoBehaviour
         request.lat = gps.GetLatitude();
         request.lon = gps.GetLongitude();
         request.at_home = player.AtHomeBase(request.lat, request.lon);
+        request.tracked = true;
+        request.timestamp = (int)(System.DateTime.UtcNow.Subtract(new System.DateTime(1970, 1, 1)).TotalSeconds);
 
         // Send message to server
         server.SendRequest(JsonUtility.ToJson(request), responseDelegate);

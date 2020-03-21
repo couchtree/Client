@@ -12,6 +12,7 @@ namespace Managers
     {
         public float lat;
         public float lon;
+        public int timestamp; // UNIX Timestamp
         public bool at_home;
         public bool tracked;
 
