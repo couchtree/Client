@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using Core.Interfaces;
 using Core.Models;
+using Managers;
+using UnityEngine;
 
 namespace Core.Garden
 {
-    public class MyGarden : ISaveable
+    public class MyGarden : MonoBehaviour, ISaveable
     {
         public const String filename = "player";
         public List<APlant> plants;
@@ -22,5 +24,11 @@ namespace Core.Garden
         {
             return new GardenData(this);
         }
+
+        void Start()
+        {
+            //just to test compiling
+            SavegameManager.Save(this, this.GenerateSaveableData());
+        }        
     }
 }
