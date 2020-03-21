@@ -2,7 +2,7 @@ using System;
 
 namespace Core.Interfaces
 {
-    public interface DataForSerialization
+    public interface IDataForSerialization
     {
         String getFilename();
 

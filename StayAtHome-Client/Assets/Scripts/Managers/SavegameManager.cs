@@ -11,7 +11,7 @@ namespace Managers
 {
     public static class SavegameManager
     {
-        public static void Save(Saveable toSave, DataForSerialization dataForSerialization)
+        public static void Save(ISaveable toSave, IDataForSerialization dataForSerialization)
         {
             FileStream stream = new FileStream(GetSavePath(dataForSerialization.getFilename()), FileMode.Create);
 
@@ -20,7 +20,7 @@ namespace Managers
             stream.Close();
         }
 
-        public static DataForSerialization LoadPlayer()
+        public static IDataForSerialization LoadPlayer()
         {
             if (File.Exists(GetSavePath(Player.filename)))
             {
@@ -35,11 +35,11 @@ namespace Managers
             return null;
         }
 
-        public static DataForSerialization LoadGarden()
+        public static IDataForSerialization LoadGarden()
         {
-            if (File.Exists(GetSavePath(Garden.filename)))
+            if (File.Exists(GetSavePath(MyGarden.filename)))
             {
-                FileStream stream = new FileStream(GetSavePath(Garden.filename), FileMode.Open);
+                FileStream stream = new FileStream(GetSavePath(MyGarden.filename), FileMode.Open);
                 GardenData gardenData = GetBinaryFormatter().Deserialize(stream) as GardenData;
                 stream.Close();
 

@@ -5,14 +5,13 @@ using Core.Interfaces;
 namespace Core.Models
 {
     [Serializable]
-    public class PlayerData : DataForSerialization
+    public class PlayerData : IDataForSerialization
     {
         public String playerName;
         public long lat;
         public long lon;
-        
-        [NonSerialized]
-        private Player playerObject;
+
+        [NonSerialized] private Player _playerObject;
 
         public string getFilename()
         {
@@ -24,14 +23,14 @@ namespace Core.Models
             this.playerName = player.Name;
             this.lat = player.lat;
             this.lon = player.lon;
-            this.playerObject = player;
+            this._playerObject = player;
         }
 
         public void loadFromData()
         {
-            this.playerObject.Name = this.playerName;
-            this.playerObject.lat = this.lat;
-            this.playerObject.lon = this.lon;
+            this._playerObject.Name = this.playerName;
+            this._playerObject.lat = this.lat;
+            this._playerObject.lon = this.lon;
         }
     }
 }

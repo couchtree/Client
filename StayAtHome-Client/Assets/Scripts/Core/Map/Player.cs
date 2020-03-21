@@ -6,25 +6,31 @@ using UnityEngine;
 
 namespace Core.Map
 {
-    public class Player : MonoBehaviour, Saveable
+    public class Player : MonoBehaviour, ISaveable
     {
         public const String filename = "player";
-        
-        [HideInInspector] 
+
+        [HideInInspector]
         public string name;
-        
-        [HideInInspector] 
+
+        [HideInInspector]
         public float distance;
 
         public string Name { get; set; }
         public long lat { get; set; }
         public long lon { get; set; }
+        public int score { get; set; }
 
         private void Update()
         {
         }
 
-        public DataForSerialization GenerateSaveableData()
+        public void ChangeScore(int amount)
+        {
+            score += amount;
+        }
+
+        public IDataForSerialization GenerateSaveableData()
         {
             return new PlayerData(this);
         }
