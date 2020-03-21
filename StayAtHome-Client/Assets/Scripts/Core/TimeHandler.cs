@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Managers;
 using TMPro;
+using Core.Global;
 
 public class ServerRequest : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class TimeHandler : MonoBehaviour
     private GPS_Tracking gps;
     private HTTPManager server;
 
+    private PlayerBehavior playerBehavior;
+
     private HTTPManager.ServerResponse responseDelegate;
 
     [Range(0.0f, 100.0f)]
@@ -59,6 +62,13 @@ public class TimeHandler : MonoBehaviour
             Debug.LogError("No GPS_Tracking found.");
             info.SetText("No GPS_Tracking found.");
         }
+        playerBehavior = GetComponent<PlayerBehavior>();
+        if (playerBehavior == null)
+        {
+            Debug.LogError("No PlayerBehavior found.");
+            info.SetText("No PlayerBehavior found.");
+        }
+
         isInitialized = true;
     }
 
@@ -92,11 +102,11 @@ public class TimeHandler : MonoBehaviour
         // Decide on response according to answer from server
         if (answer.distance > maxDistanceFromHome)
         {
-            // Trigger Bad event
+            playerBehavior.SubtractPoints(10);
         }
         else
         {
-            // Trigger good event
+            playerBehavior.AddPoints(10);
         }
     }
 }
