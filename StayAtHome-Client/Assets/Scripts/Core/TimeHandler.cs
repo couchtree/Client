@@ -5,40 +5,6 @@ using Managers;
 using TMPro;
 using Core.Global;
 
-public class Request : MonoBehaviour
-{
-    public float lat;
-    public float lon;
-    public bool at_home;
-    public bool tracked;
-
-    Request()
-    {
-        lat = 0.0f;
-        lon = 0.0f;
-        at_home = false;
-        tracked = false;
-    }
-
-    public string SaveToString()
-    {
-        return JsonUtility.ToJson(this);
-    }
-}
-
-[System.Serializable]
-public class Response : Object
-{
-    public int dir; // -> enum [0:"n",1:"ne",2:"e",3:"se",4:"s",5:"sw",6:"w",7:"nw"]
-    public float dist;
-    public float vel_nearing; // clarify on type
-
-    public static Response CreateFromJSON(string jsonString)
-    {
-        return JsonUtility.FromJson<Response>(jsonString);
-    }
-}
-
 public class TimeHandler : MonoBehaviour
 {
     [SerializeField]
@@ -98,7 +64,7 @@ public class TimeHandler : MonoBehaviour
     private void RequestUpdate()
     {
         // Request current lan, lon from PGS
-        Request request = new Request();
+        PostRequest request = new PostRequest();
         request.lat = gps.GetLatitude();
         request.lon = gps.GetLongitude();
 
@@ -110,9 +76,9 @@ public class TimeHandler : MonoBehaviour
     {
         Debug.Log("Response is: " + response);
         info.SetText("Response is:" + response); //Remove
-        List<Response> responses =  JsonUtility.FromJson<List<Response>>(response);
+        PostResponse responses =  JsonUtility.FromJson<PostResponse>(response);
         // Decide on response according to answer from server
-        if (responses[0].dist > maxDistanceFromHome)
+        if (responses.responseElements[0].dist > maxDistanceFromHome)
         {
             playerBehavior.SubtractPoints(10);
         }
