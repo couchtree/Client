@@ -62,7 +62,9 @@ public class GPS_Tracking : MonoBehaviour
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser)
         {
-            Debug.Log("GPS is required");
+            info.SetText("GPS is required");
+            yield return 1;
+            StartCoroutine(InitializeGPS());
             yield break;
         }
 
