@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Managers;
+using TMPro;
 
 public class ServerRequest : MonoBehaviour
 {
@@ -15,20 +16,25 @@ public class ServerRequest : MonoBehaviour
 }
 
 [System.Serializable]
-public class ServerReturn : Object
+public class ServerResponse : Object
 {
     public float distance;
 
-    public static ServerReturn CreateFromJSON(string jsonString)
+    public static ServerResponse CreateFromJSON(string jsonString)
     {
-        return JsonUtility.FromJson<ServerReturn>(jsonString);
+        return JsonUtility.FromJson<ServerResponse>(jsonString);
     }
 }
 
 public class TimeHandler : MonoBehaviour
 {
+    [SerializeField]
+    TextMeshProUGUI info; // Only for debugging
+
     private GPS_Tracking gps;
-    private ServerManager server;
+    private HTTPManager server;
+
+    private HTTPManager.ServerResponse responseDelegate;
 
     [Range(0.0f, 100.0f)]
     public float maxDistanceFromHome = 10.0f; // Distance from home [m]
@@ -38,19 +44,20 @@ public class TimeHandler : MonoBehaviour
     private float nextActionTime = 0.0f;
     public float period = 0.1f; // [s]
 
-    // Start is called before the first frame update
     void Start()
     {
         // Aquire Server Connect utility class
-        server = GetComponent<ServerManager>();
+        server = HTTPManager.Instance;
         if (server == null)
         {
             Debug.LogError("No ServerManager found");
+            info.SetText("No ServerManager found");
         }
         gps = GetComponent<GPS_Tracking>();
         if (gps == null)
         {
             Debug.LogError("No GPS_Tracking found.");
+            info.SetText("No GPS_Tracking found.");
         }
         isInitialized = true;
     }
@@ -60,21 +67,13 @@ public class TimeHandler : MonoBehaviour
     {
         if (Time.time > nextActionTime && isInitialized)  
         {
+            info.SetText("Send Request");
             nextActionTime += period;
-            RequestAndHandleUpdate();
+            RequestUpdate();
         }
     }
 
-    private void RequestAndHandleUpdate()
-    {
-        ServerReturn answer = new ServerReturn();
-        if (RequestUpdate(out answer))
-        {
-            HandleServerRequest(answer);
-        }
-    }
-
-    private bool RequestUpdate(out ServerReturn serverAnswer)
+    private void RequestUpdate()
     {
         // Request current lan, lon from PGS
         ServerRequest request = new ServerRequest();
@@ -82,18 +81,14 @@ public class TimeHandler : MonoBehaviour
         request.lon = gps.GetLongitude();
 
         // Send message to server
-        server.Send(request);
-
-        // receiving answer from server and providing result
-        // string message = server.Listen(); ??
-        string message = string.Empty;
-        serverAnswer = ServerReturn.CreateFromJSON(message);
-
-        return true;
+        server.SendRequest(JsonUtility.ToJson(request), responseDelegate);
     }
 
-    private void HandleServerRequest(ServerReturn answer)
+    private void HandleServerRequest(string response)
     {
+        Debug.Log("Response is: " + response);
+        info.SetText("Response is:" + response); //Remove
+        ServerResponse answer = ServerResponse.CreateFromJSON(response);
         // Decide on response according to answer from server
         if (answer.distance > maxDistanceFromHome)
         {
