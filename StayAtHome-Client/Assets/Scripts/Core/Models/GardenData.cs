@@ -12,6 +12,18 @@ namespace Core.Models
         public int treeEvolution;
         [NonSerialized] private MyGarden _myGarden;
 
+        public GardenData(MyGarden myGarden)
+        {
+            this.plantEvolutions = new List<int>();
+            foreach (var plant in myGarden.plants)
+            {
+                this.plantEvolutions.Add(plant.EvolutionLevel);
+            }
+
+            this.treeEvolution = myGarden.tree.EvolutionLevel;
+            this._myGarden = myGarden;
+        }
+
         public string getFilename()
         {
             return "garden";
@@ -25,17 +37,6 @@ namespace Core.Models
             {
                 this._myGarden.plants.Add(new NormalPlant(plantEvolution));
             }
-        }
-
-        public GardenData(MyGarden myGarden)
-        {
-            foreach (var plant in myGarden.plants)
-            {
-                this.plantEvolutions.Add(plant.EvolutionLevel);
-            }
-
-            this.treeEvolution = myGarden.tree.EvolutionLevel;
-            this._myGarden = myGarden;
         }
     }
 }
