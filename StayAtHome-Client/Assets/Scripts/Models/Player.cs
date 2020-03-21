@@ -1,5 +1,6 @@
 using System;
 using Interfaces;
+using Managers;
 using UnityEngine;
 
 namespace Models
@@ -16,5 +17,12 @@ namespace Models
         {
             return new PlayerData(this);
         }
+        
+        // Start is called before the first frame update
+        void Start()
+        {
+            //just to test compiling
+            SavegameManager.Save(this,this.GenerateSaveableData());
+        }        
     }
 }

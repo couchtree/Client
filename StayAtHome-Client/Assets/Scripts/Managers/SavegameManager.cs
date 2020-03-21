@@ -13,6 +13,7 @@ namespace Managers
         {
             FileStream stream = new FileStream(GetSavePath(dataForSerialization.getFilename()), FileMode.Create);
 
+            Debug.Log("save to file: " + GetSavePath(dataForSerialization.getFilename()));
             GetBinaryFormatter().Serialize(stream, toSave.GenerateSaveableData());
             stream.Close();
         }

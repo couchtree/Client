@@ -9,6 +9,8 @@ namespace Models
         public String playerName;
         public long lat;
         public long lon;
+        
+        [NonSerialized]
         private PlayerInterface playerObject;
 
         public string getFilename()
