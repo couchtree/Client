@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.DesignPattern;
 
-public class GameManager : Singleton<GameManager>
+namespace Managers
 {
-    private protected override void Awake()
+    public class GameManager : Singleton<GameManager>
     {
-        base.Awake();
-    }
+        private protected override void Awake()
+        {
+            base.Awake();
+        }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
         
     }
 }
