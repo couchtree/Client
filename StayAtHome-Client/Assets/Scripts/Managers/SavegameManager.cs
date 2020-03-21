@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Core.Garden;
 using Core.Map;
 using Core.Interfaces;
 using Core.Models;
@@ -31,6 +32,21 @@ namespace Managers
             }
 
             Debug.LogError("No player savegame found! Save first once");
+            return null;
+        }
+
+        public static DataForSerialization LoadGarden()
+        {
+            if (File.Exists(GetSavePath(Garden.filename)))
+            {
+                FileStream stream = new FileStream(GetSavePath(Garden.filename), FileMode.Open);
+                GardenData gardenData = GetBinaryFormatter().Deserialize(stream) as GardenData;
+                stream.Close();
+
+                return gardenData;
+            }
+
+            Debug.LogError("No garden savegame found! Save first once");
             return null;
         }
 

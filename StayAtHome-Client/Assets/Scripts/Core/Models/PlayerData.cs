@@ -12,14 +12,14 @@ namespace Core.Models
         public long lon;
         
         [NonSerialized]
-        private PlayerInterface playerObject;
+        private Player playerObject;
 
         public string getFilename()
         {
             return Player.filename;
         }
 
-        public PlayerData(PlayerInterface player)
+        public PlayerData(Player player)
         {
             this.playerName = player.Name;
             this.lat = player.lat;
