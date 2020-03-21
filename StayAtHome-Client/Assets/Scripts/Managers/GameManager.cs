@@ -5,17 +5,24 @@ using Core.DesignPattern;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using Core.Garden;
 
 namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
+        public MyGarden Garden { get; private set; }
+
         public string deviceID;
 
         HTTPManager.ServerResponse responseDelegate;
         private protected override void Awake()
         {
             base.Awake();
+
+            this.Garden = new MyGarden();
+
+            // Set values from server?
         }
 
         private void Start()
