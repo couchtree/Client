@@ -103,12 +103,12 @@ public class GPS_Tracking : MonoBehaviour
         longitude = Input.location.lastData.longitude;
     }
 
-    float GetLatitude()
+    public float GetLatitude()
     {
         return latitude;
     }
 
-    float GetLongitude()
+    public float GetLongitude()
     {
         return longitude;
     }
