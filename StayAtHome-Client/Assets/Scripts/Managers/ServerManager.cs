@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.IO;
 using System.Text;
 using System.Threading;
 using UnityEngine;
@@ -40,22 +41,26 @@ public class ServerManager : MonoBehaviour
     {
         try
         {
-            Console.WriteLine("Listen");
-            socketConnection = new TcpClient("localhost", 80);
+            socketConnection = new TcpClient("127.0.0.1", 1337);
             byte[] bytes = new byte[1024];
-            while (true)
-            {
-                using (NetworkStream stream = socketConnection.GetStream())
+            if (socketConnection.Connected)
+            { 
+                Debug.Log("Connected!");
+                NetworkStream stream = socketConnection.GetStream();
+                int length;
+
+                while ((length = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
-                    int length;
-                    while ((length = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        var data = new byte[length];
-                        Array.Copy(bytes, 0, data, 0, length);
-                        string serverMessage = Encoding.ASCII.GetString(data);
-                        Debug.Log("server message received as: " + serverMessage);
-                    }
+                    var data = new byte[length];
+                    Array.Copy(bytes, 0, data, 0, length);
+
+                    string message = Encoding.ASCII.GetString(data);
+                    Debug.Log(message);
                 }
+            }
+            else
+            {
+                Debug.Log("Not connected!");
             }
         }
         catch (SocketException socketException)
