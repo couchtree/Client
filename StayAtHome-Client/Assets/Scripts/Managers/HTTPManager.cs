@@ -6,6 +6,51 @@ using UnityEngine.Networking;
 
 namespace Managers
 {
+    
+    // Class representing the Request Body of the Backend-API for POST
+    public class PostRequest : MonoBehaviour
+    {
+        public float lat;
+        public float lon;
+        public bool at_home;
+        public bool tracked;
+
+        public PostRequest()
+        {
+            lat = 0.0f;
+            lon = 0.0f;
+            at_home = false;
+            tracked = false;
+        }
+
+        public string SaveToString()
+        {
+            return JsonUtility.ToJson(this);
+        }
+    }
+
+    public class PostResponseElement
+    {
+        public int dir; // -> enum [0:"n",1:"ne",2:"e",3:"se",4:"s",5:"sw",6:"w",7:"nw"]
+        public float dist; // [m]
+        public float vel_nearing; // clarify on type
+
+        public static PostResponseElement CreateFromJSON(string jsonString)
+        {
+            return JsonUtility.FromJson<PostResponseElement>(jsonString);
+        }
+    }
+    // Class representing the Response Body-Element of the Backend-API for POST
+    public class PostResponse : MonoBehaviour
+    {
+        public List<PostResponseElement> responseElements; // List of up PostResponseElements each for another player
+
+        public static PostResponse CreateFromJSON(string jsonString)
+        {
+            return JsonUtility.FromJson<PostResponse>(jsonString);
+        }
+    }
+
     public class HTTPManager : Singleton<HTTPManager>
     {
         public delegate void ServerResponse(string response);

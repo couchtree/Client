@@ -5,28 +5,6 @@ using Managers;
 using TMPro;
 using Core.Global;
 
-public class ServerRequest : MonoBehaviour
-{
-    public float lat;
-    public float lon;
-
-    public string SaveToString()
-    {
-        return JsonUtility.ToJson(this);
-    }
-}
-
-[System.Serializable]
-public class ServerResponse : Object
-{
-    public float distance;
-
-    public static ServerResponse CreateFromJSON(string jsonString)
-    {
-        return JsonUtility.FromJson<ServerResponse>(jsonString);
-    }
-}
-
 public class TimeHandler : MonoBehaviour
 {
     [SerializeField]
@@ -86,7 +64,7 @@ public class TimeHandler : MonoBehaviour
     private void RequestUpdate()
     {
         // Request current lan, lon from PGS
-        ServerRequest request = new ServerRequest();
+        PostRequest request = new PostRequest();
         request.lat = gps.GetLatitude();
         request.lon = gps.GetLongitude();
 
@@ -98,9 +76,9 @@ public class TimeHandler : MonoBehaviour
     {
         Debug.Log("Response is: " + response);
         info.SetText("Response is:" + response); //Remove
-        ServerResponse answer = ServerResponse.CreateFromJSON(response);
+        PostResponse responses =  JsonUtility.FromJson<PostResponse>(response);
         // Decide on response according to answer from server
-        if (answer.distance > maxDistanceFromHome)
+        if (responses.responseElements[0].dist > maxDistanceFromHome)
         {
             playerBehavior.SubtractPoints(10);
         }
