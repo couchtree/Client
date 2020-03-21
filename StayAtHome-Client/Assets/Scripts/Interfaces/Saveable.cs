@@ -1,7 +1,7 @@
 namespace Interfaces
 {
-    public abstract class Saveable
+    public interface Saveable
     {
-        public abstract DataForSerialization GenerateSaveableData();
+        DataForSerialization GenerateSaveableData();
     }
 }

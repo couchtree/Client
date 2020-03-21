@@ -1,9 +1,10 @@
 using System;
 using Interfaces;
+using UnityEngine;
 
 namespace Models
 {
-    public class Player : Saveable, PlayerInterface
+    public class Player : MonoBehaviour, Saveable, PlayerInterface
     {
         public const String filename = "player";
 
@@ -11,7 +12,7 @@ namespace Models
         public long lat { get; set; }
         public long lon { get; set; }
 
-        public override DataForSerialization GenerateSaveableData()
+        public DataForSerialization GenerateSaveableData()
         {
             return new PlayerData(this);
         }
