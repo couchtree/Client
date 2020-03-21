@@ -199,7 +199,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a091cd31b946743ba076a44057c009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6818897713972417946, guid: 00f00dced20e3974486a2432ea360d72, type: 3}
+  prefab: {fileID: 947263869306858335, guid: d359a8ed8a8b97b43a1b4c1cb7a748df, type: 3}
   numberToCreate: 2
 --- !u!114 &515254986
 MonoBehaviour:

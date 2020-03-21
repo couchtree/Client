@@ -20,7 +20,6 @@ namespace Core.Garden
             for (int i = 0; i < this.numberToCreate; i++)
             {
                 newObj = Instantiate(this.prefab, transform);
-                newObj.GetComponent<Image>().color = Color.green;
             }
         }
     }
