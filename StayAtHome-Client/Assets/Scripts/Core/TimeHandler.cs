@@ -110,9 +110,9 @@ public class TimeHandler : MonoBehaviour
     {
         Debug.Log("Response is: " + response);
         info.SetText("Response is:" + response); //Remove
-        Response answer = Response.CreateFromJSON(response);
+        List<Response> responses =  JsonUtility.FromJson<List<Response>>(response);
         // Decide on response according to answer from server
-        if (answer.dist > maxDistanceFromHome)
+        if (responses[0].dist > maxDistanceFromHome)
         {
             playerBehavior.SubtractPoints(10);
         }
