@@ -2,7 +2,7 @@ using Core.Interfaces;
 
 namespace Core.Models
 {
-    public class GardenData : DataForSerialization
+    public class GardenData : IDataForSerialization
     {
         public string getFilename()
         {

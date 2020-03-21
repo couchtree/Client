@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Core.Map
 {
-    public class Player : MonoBehaviour, Saveable
+    public class Player : MonoBehaviour, ISaveable
     {
         public const String filename = "player";
         
@@ -24,7 +24,7 @@ namespace Core.Map
         {
         }
 
-        public DataForSerialization GenerateSaveableData()
+        public IDataForSerialization GenerateSaveableData()
         {
             return new PlayerData(this);
         }

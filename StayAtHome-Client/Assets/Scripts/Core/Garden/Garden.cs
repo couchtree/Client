@@ -4,11 +4,11 @@ using Core.Models;
 
 namespace Core.Garden
 {
-    public class Garden : Saveable
+    public class Garden : ISaveable
     {
         public const String filename = "player";
-
-        public DataForSerialization GenerateSaveableData()
+        
+        public IDataForSerialization GenerateSaveableData()
         {
             return new GardenData(this);
         }

@@ -5,7 +5,7 @@ using Core.Interfaces;
 namespace Core.Models
 {
     [Serializable]
-    public class PlayerData : DataForSerialization
+    public class PlayerData : IDataForSerialization
     {
         public String playerName;
         public long lat;
