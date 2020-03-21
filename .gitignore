@@ -10,6 +10,10 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
+# TextMesh Pro Files
+[Tt]extMesh Pro/
+[Tt]extMesh Pro.meta
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -58,3 +62,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#Rider Stuff
+.idea/
