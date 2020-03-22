@@ -3498,7 +3498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab6c9f6003c8564183f9b8a65b066e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _progressBar: {fileID: 0}
 --- !u!1 &1689204773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,7 +4233,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1654905917}
-        m_MethodName: LoadSceneOverMenu
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
