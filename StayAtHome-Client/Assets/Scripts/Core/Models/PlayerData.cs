@@ -11,8 +11,6 @@ namespace Core.Models
         public float lat;
         public float lon;
 
-        [NonSerialized] private Player _playerObject;
-
         public string getFilename()
         {
             return Player.filename;
@@ -23,14 +21,14 @@ namespace Core.Models
             this.playerName = player.Name;
             this.lat = player.lat;
             this.lon = player.lon;
-            this._playerObject = player;
         }
 
         public void loadFromData()
         {
-            this._playerObject.Name = this.playerName;
-            this._playerObject.lat = this.lat;
-            this._playerObject.lon = this.lon;
+            var singleTon = Player.Instance;
+            singleTon.Name = this.playerName;
+            singleTon.lat = this.lat;
+            singleTon.lon = this.lon;
         }
     }
 }

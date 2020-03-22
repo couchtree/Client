@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.DesignPattern;
 using Core.Interfaces;
 using Core.Models;
 using Managers;
@@ -7,11 +8,13 @@ using UnityEngine;
 
 namespace Core.Garden
 {
-    public class MyGarden : MonoBehaviour, ISaveable
+    public class MyGarden : Singleton<MyGarden>, ISaveable
     {
         public const String filename = "player";
         public List<APlant> plants;
-        public TreePlant tree;
+        public GameObject tree;
+
+        public string Name { get; set; }
 
         // Move these to wherever you see fit..
         public int Health { get; private set; } = 100;
@@ -29,22 +32,23 @@ namespace Core.Garden
         public int Disease { get; private set; } = 0;
         public int MaxDisease { get; private set; } = 10;
 
+
+        private protected override void Awake()
+        {
+            base.Awake();
+            
+            this.plants = new List<APlant>();
+            this.tree = new GameObject("tree");
+            this.tree.AddComponent<TreePlant>();
+        }
+
         public MyGarden()
         {
-            this.plants = new List<APlant>();
-            this.plants.Add(new NormalPlant());
-            this.tree = new TreePlant();
         }
 
         public IDataForSerialization GenerateSaveableData()
         {
             return new GardenData(this);
         }
-
-        void Start()
-        {
-            //just to test compiling
-            SavegameManager.Save(this, this.GenerateSaveableData());
-        }        
     }
 }

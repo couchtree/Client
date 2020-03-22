@@ -27,6 +27,7 @@ namespace Managers
                 FileStream stream = new FileStream(GetSavePath(Player.filename), FileMode.Open);
                 PlayerData playerData = GetBinaryFormatter().Deserialize(stream) as PlayerData;
                 stream.Close();
+                playerData.loadFromData();
 
                 return playerData;
             }
@@ -42,6 +43,12 @@ namespace Managers
                 FileStream stream = new FileStream(GetSavePath(MyGarden.filename), FileMode.Open);
                 GardenData gardenData = GetBinaryFormatter().Deserialize(stream) as GardenData;
                 stream.Close();
+                if (gardenData is null)
+                {
+                    return null;
+                }
+                Debug.Log(gardenData);
+                gardenData.loadFromData();
 
                 return gardenData;
             }

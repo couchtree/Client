@@ -11,11 +11,11 @@ namespace Core.Map
     {
         public const String filename = "player";
 
-        [HideInInspector]
-        new public string name;
+        [HideInInspector] new public string name;
 
         [HideInInspector]
-        public float distance; // max distance from home base until current position is no longer treated as beeing at home
+        public float
+            distance; // max distance from home base until current position is no longer treated as beeing at home
 
         public string Name { get; set; }
         public float lat { get; set; }
@@ -40,6 +40,7 @@ namespace Core.Map
             {
                 return true;
             }
+
             return false;
         }
 
@@ -48,10 +49,10 @@ namespace Core.Map
             return new PlayerData(this);
         }
 
-        void Start()
+        public void LoadPlayer()
         {
-            //just to test compiling
-            SavegameManager.Save(this, this.GenerateSaveableData());
+            var playerData = SavegameManager.LoadPlayer();
+            
         }
     }
 }

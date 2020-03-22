@@ -10,7 +10,8 @@ namespace Core.Models
     {
         public List<int> plantEvolutions;
         public int treeEvolution;
-        [NonSerialized] private MyGarden _myGarden;
+        public String treeName;
+        public String gardenName;
 
         public GardenData(MyGarden myGarden)
         {
@@ -20,8 +21,9 @@ namespace Core.Models
                 this.plantEvolutions.Add(plant.EvolutionLevel);
             }
 
-            this.treeEvolution = myGarden.tree.EvolutionLevel;
-            this._myGarden = myGarden;
+            this.treeEvolution = myGarden.tree.GetComponent<TreePlant>().EvolutionLevel;
+            this.gardenName = myGarden.Name;
+            this.treeName = myGarden.tree.GetComponent<TreePlant>().Name;
         }
 
         public string getFilename()
@@ -31,12 +33,15 @@ namespace Core.Models
 
         public void loadFromData()
         {
-            this._myGarden.tree = new TreePlant(this.treeEvolution);
-            this._myGarden.plants = new List<APlant>();
-            foreach (int plantEvolution in this.plantEvolutions)
-            {
-                this._myGarden.plants.Add(new NormalPlant(plantEvolution));
-            }
+            var singleTon = MyGarden.Instance;
+            singleTon.Name = this.gardenName;
+            singleTon.tree.GetComponent<TreePlant>().Name = this.treeName;
+
+//            this._myGarden.plants = new List<APlant>();
+//            foreach (int plantEvolution in this.plantEvolutions)
+            //          {
+            //this._myGarden.plants.Add(new NormalPlant(plantEvolution));
+            //}
         }
     }
 }
