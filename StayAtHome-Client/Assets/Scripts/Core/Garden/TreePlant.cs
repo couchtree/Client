@@ -12,10 +12,5 @@ namespace Core.Garden
         {
             return 30;
         }
-
-        public override string GetName()
-        {
-            return "Big Fat Tree! OMG YEAH!";
-        }
     }
 }

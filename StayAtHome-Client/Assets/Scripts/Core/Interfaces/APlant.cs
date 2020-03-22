@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Core.Interfaces
 {
-    public abstract class APlant: MonoBehaviour
+    public abstract class APlant : MonoBehaviour
     {
         public int EvolutionLevel;
+        public string Name { get; set; }
 
         protected abstract int GetMaxEvolutionLevel();
-        public abstract String GetName();
 
         public bool IsMaxLvl()
         {
