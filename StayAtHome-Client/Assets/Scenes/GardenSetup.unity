@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 61252075}
   - component: {fileID: 61252074}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: EnterNameHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 149419186}
   - component: {fileID: 149419185}
   m_Layer: 0
-  m_Name: Placeholder
+  m_Name: PlaceholderGarden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: z.B. blablaaa
+  m_text: Your Garden name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 211982231}
   - component: {fileID: 211982230}
   m_Layer: 0
-  m_Name: Text
+  m_Name: RequestNameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 398586817}
   - component: {fileID: 398586816}
   m_Layer: 0
-  m_Name: Panel2
+  m_Name: Panel_SetGarden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 398815922}
   - component: {fileID: 398815921}
   m_Layer: 0
-  m_Name: InputField (TMP)
+  m_Name: GardenInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 879642822}
   - component: {fileID: 879642821}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: EnterGardenPlaceholderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1687,7 +1687,7 @@ GameObject:
   - component: {fileID: 1078546523}
   - component: {fileID: 1078546522}
   m_Layer: 0
-  m_Name: Placeholder
+  m_Name: PlaceholderName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: z.B. blablaaa
+  m_text: Your name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1799,10 +1799,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1078546522}
-    characterCount: 13
+    characterCount: 9
     spriteCount: 0
     spaceCount: 1
-    wordCount: 3
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -2181,8 +2181,9 @@ GameObject:
   - component: {fileID: 1317007882}
   - component: {fileID: 1317007881}
   - component: {fileID: 1317007880}
+  - component: {fileID: 1317007883}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ButtonOnNamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2250,29 +2251,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1317007881}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1556643092}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 398586814}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1317007881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,6 +2288,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317007878}
   m_CullTransparentMesh: 0
+--- !u!114 &1317007883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317007878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4267afc4fd97270409f509e860ea8f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisButton: {fileID: 1317007880}
+  mandetoryTextField: {fileID: 211982230}
+  errorTextField: {fileID: 1386828615}
+  currentPanel: {fileID: 1556643092}
+  nextPanel: {fileID: 398586814}
 --- !u!1 &1342419263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,7 +2318,7 @@ GameObject:
   - component: {fileID: 1342419266}
   - component: {fileID: 1342419265}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ButtonOnGardenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2461,7 +2457,7 @@ GameObject:
   - component: {fileID: 1386828616}
   - component: {fileID: 1386828615}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: EnterNameErrorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2504,7 +2500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BLAblabla
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2573,13 +2569,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1386828615}
-    characterCount: 9
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3323,7 +3319,7 @@ GameObject:
   - component: {fileID: 1556643095}
   - component: {fileID: 1556643094}
   m_Layer: 0
-  m_Name: Panel1
+  m_Name: Panel_SetName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3560,7 +3556,7 @@ GameObject:
   - component: {fileID: 1698560205}
   - component: {fileID: 1698560204}
   m_Layer: 0
-  m_Name: Text
+  m_Name: RequestGardenField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3715,7 +3711,7 @@ GameObject:
   - component: {fileID: 1715209969}
   - component: {fileID: 1715209968}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: EnterGardenHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4446,7 +4442,7 @@ GameObject:
   - component: {fileID: 1835630671}
   - component: {fileID: 1835630670}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: NextOnNamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4679,7 +4675,7 @@ GameObject:
   - component: {fileID: 1971825230}
   - component: {fileID: 1971825229}
   m_Layer: 0
-  m_Name: InputField (TMP)
+  m_Name: NameInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
