@@ -12,6 +12,10 @@ namespace Managers
         public TMP_InputField playerName;
         public TMP_InputField gardenName;
         public TMP_InputField treeName;
+        
+        [Header("Error Handling")]
+        public GameObject errorPanel;
+        public TextMeshProUGUI errorText;
 
         [Header("Switchable Panels")]
         public GameObject panel1;
@@ -21,6 +25,7 @@ namespace Managers
 
         private void Awake()
         {
+            this.errorPanel.SetActive(false);
             PlayerPrefs.DeleteAll();
             if (!PlayerPrefs.HasKey("player.name") || PlayerPrefs.GetString("player.name") == "")
             {
@@ -51,9 +56,12 @@ namespace Managers
             var player = GetComponent<Player>();
             if (this.playerName.text.Equals(""))
             {
+                this.ShowError("Du musst einen Spielernamen auswählen!");
                 Debug.LogError("No playername given");
                 return;
             }
+
+            this.hideError();
 
             player.Name = this.playerName.text;
             SavegameManager.SavePlayer(player);
@@ -66,9 +74,12 @@ namespace Managers
             MyGarden garden = GetComponent<MyGarden>();
             if (this.gardenName.text.Equals(""))
             {
+                this.ShowError("Du musst einen Namen für den Garten auswählen!");
                 Debug.LogError("No gardenname given");
                 return;
             }
+
+            this.hideError();
 
             garden.Name = this.gardenName.text;
             SavegameManager.SaveGarden(garden);
@@ -81,9 +92,12 @@ namespace Managers
             MyGarden garden = GetComponent<MyGarden>();
             if (this.treeName.text.Equals(""))
             {
+                this.ShowError("Du musst einen Namen für den ersten Setzling auswählen!");
                 Debug.LogError("No treenname given");
                 return;
             }
+
+            this.hideError();
 
             garden.tree.GetComponent<TreePlant>().Name = this.treeName.text;
             SavegameManager.SaveTree(garden.tree.GetComponent<TreePlant>());
@@ -93,6 +107,7 @@ namespace Managers
 
         public void SaveHomeLocation()
         {
+            this.hideError();
             //Todo GPS saving
             this.panel4.SetActive(false);
             SetupCompleted();
@@ -102,6 +117,17 @@ namespace Managers
         {
             SceneLoading sceneLoading = GetComponent<SceneLoading>();
             sceneLoading.LoadScene(2);
+        }
+
+        private void hideError()
+        {
+            this.errorPanel.SetActive(false);
+        }
+
+        private void ShowError(string errorText)
+        {
+            this.errorText.text = errorText;
+            this.errorPanel.SetActive(true);
         }
     }
 }
