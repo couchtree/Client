@@ -67,8 +67,6 @@ public class UIHomeScreen : MonoBehaviour
     {
         this.overlay.SetActive(false);
 
-        Debug.Log(GameManager.Instance);
-
         this.healthCurValue.text = GameManager.Instance.Garden.Health.ToString();
         this.healthMaxValue.text = GameManager.Instance.Garden.MaxHealth.ToString();
 
