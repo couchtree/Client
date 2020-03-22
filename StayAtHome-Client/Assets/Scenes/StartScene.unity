@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1047800193
 Animator:
   serializedVersion: 3
@@ -245,7 +245,7 @@ Animator:
   m_GameObject: {fileID: 1047800192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 54bce1eb983c649d6861ae824ae526d6, type: 2}
+  m_Controller: {fileID: 9100000, guid: b33d9b286bb394c3f86d1d21df7d9202, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -293,7 +293,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e19555fe42c3343768c32d0b0c8df31f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37a9d1c72eb4c8544b5abee1da4869a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -380,6 +380,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7326451351678849445, guid: d24c30df5f6f746bfbc39b23564d79a9,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7326451351678849447, guid: d24c30df5f6f746bfbc39b23564d79a9,
         type: 3}
       propertyPath: m_Name
@@ -392,3 +397,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d24c30df5f6f746bfbc39b23564d79a9, type: 3}
+--- !u!1001 &2367921014645798392
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2367921014141032331, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_Name
+      value: baumanimation_00000 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367921014141032334, guid: 9dc6e3545b486014789742e910a02c74,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9dc6e3545b486014789742e910a02c74, type: 3}
