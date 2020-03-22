@@ -1,26 +1,25 @@
-﻿using System;
-using Core.Interfaces;
-using Managers;
-using Core.Models;
-using UnityEngine;
+﻿using UnityEngine;
 using Core.DesignPattern;
 
 namespace Core.Map
 {
-    public class Player : Singleton<Player>, ISaveable
+    public class Player : Singleton<Player>
     {
-        public const String filename = "player";
+        [HideInInspector] new public string name;
 
-        [HideInInspector]
-        new public string name;
-
-        [HideInInspector]
-        public float distance; // max distance from home base until current position is no longer treated as beeing at home
+        [HideInInspector] public float
+            distance; // max distance from home base until current position is no longer treated as beeing at home
 
         public string Name { get; set; }
         public float lat { get; set; }
         public float lon { get; set; }
         public int score { get; set; }
+
+        private protected override void Awake()
+        {
+            base.Awake();
+            this.LoadPlayer();
+        }
 
         private void Update()
         {
@@ -40,18 +39,26 @@ namespace Core.Map
             {
                 return true;
             }
+
             return false;
         }
 
-        public IDataForSerialization GenerateSaveableData()
+        public void LoadPlayer()
         {
-            return new PlayerData(this);
-        }
+            if (!PlayerPrefs.HasKey("player.name"))
+            {
+                return;
+            }
 
-        void Start()
-        {
-            //just to test compiling
-            SavegameManager.Save(this, this.GenerateSaveableData());
+            if (PlayerPrefs.HasKey("player.lat") && PlayerPrefs.HasKey("player.lon"))
+            {
+                this.lat = PlayerPrefs.GetFloat("player.lat");
+                this.lon = PlayerPrefs.GetFloat("player.lon");
+            }
+
+            this.Name = PlayerPrefs.GetString("player.name");
+            this.score = PlayerPrefs.GetInt("player.score", 0);
+            return;
         }
     }
 }

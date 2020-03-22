@@ -12,10 +12,5 @@ namespace Core.Garden
         {
             return 5;
         }
-
-        public override string GetName()
-        {
-            return "NormalPlant";
-        }
     }
 }
