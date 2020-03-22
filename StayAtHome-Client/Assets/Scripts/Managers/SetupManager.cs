@@ -1,4 +1,5 @@
-﻿using Core.Garden;
+﻿using System;
+using Core.Garden;
 using Core.Map;
 using TMPro;
 using UI;
@@ -35,12 +36,6 @@ namespace Managers
 
         private void Awake()
         {
-            if (!GPS_Tracking.isGpsEnabled())
-            {
-                Debug.Log("GPS NOT ENABLED!!!!!!!!");
-                gpsButton.SetActive(false);
-                gpsDeactivatedInfo.SetActive(true);
-            }
             this.errorPanel.SetActive(false);
             if (activateDebugging)
             {
@@ -70,6 +65,16 @@ namespace Managers
             panel3.SetActive(false);
             panel4.SetActive(false);
             this.SetupCompleted();
+        }
+
+        private void Update()
+        {
+            if (!GPS_Tracking.isGpsEnabled())
+            {
+                Debug.Log("GPS NOT ENABLED!!!!!!!!");
+                gpsButton.SetActive(false);
+                gpsDeactivatedInfo.SetActive(true);
+            }
         }
 
         public void SavePlayerName()
@@ -141,11 +146,17 @@ namespace Managers
 
         public void setHomeGPSPosition()
         {
+            if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
+            {
+                this.ShowError("Du bist mit keinem WLAN verbunden. Bist du wirklich zuhause du Lümmel?");
+                return;
+            }
             var gps = gameObject.GetComponent<GPS_Tracking>();
             var player = gameObject.GetComponent<Player>();
             Debug.Log("gps setzen");
             Debug.Log(gps.GetLatitude());
             Debug.Log(gps.GetLongitude());
+            
             player.lat = gps.GetLatitude();
             player.lon = gps.GetLongitude();
             SaveHomeLocation();
