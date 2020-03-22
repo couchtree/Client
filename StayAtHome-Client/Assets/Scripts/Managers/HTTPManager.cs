@@ -8,6 +8,7 @@ namespace Managers
 {
     
     // Struct representing the Request Body of the Backend-API for POST
+    [System.Serializable]
     public struct PostRequest
     {
         public float lat;
@@ -23,6 +24,7 @@ namespace Managers
     }
 
     // Struct representing the Response element i.e. a nearby player of the Backend-Api for POST
+    [System.Serializable]
     public struct PostResponseElement
     {
         public int dir; // -> enum [0:"n",1:"ne",2:"e",3:"se",4:"s",5:"sw",6:"w",7:"nw"]
@@ -31,6 +33,7 @@ namespace Managers
     }
 
     // Struct representing the Response Body-Element of the Backend-API for POST
+    [System.Serializable]
     public class PostResponse
     {
         public PostResponseElement[] nearby_players = new PostResponseElement[5]; // List of up nearby_players

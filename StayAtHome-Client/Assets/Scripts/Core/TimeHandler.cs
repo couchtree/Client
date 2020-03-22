@@ -86,15 +86,6 @@ public class TimeHandler : MonoBehaviour
     {
         Debug.Log("Response is: " + response);  // TODO remove
         PostResponse responses = new PostResponse();
-        PostResponseElement ele = new PostResponseElement();
-        ele.dir = 5;
-        ele.dist = 10.0f;
-        ele.vel_nearing = 11.0f;
-        responses.nearby_players[0] = ele;
-        var json = JsonUtility.ToJson(responses);
-        Debug.Log("json: " + json);
-        var parsed = JsonUtility.FromJson<PostResponse>(json);
-        Debug.Log("parsed: " + parsed);
 
         try
         {
