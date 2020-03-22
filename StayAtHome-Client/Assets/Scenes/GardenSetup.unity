@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 97491556}
   - component: {fileID: 97491555}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: EnterSeedlingHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 552624893}
   - component: {fileID: 552624892}
   m_Layer: 0
-  m_Name: InputField (TMP)
+  m_Name: SeedlingInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 879642822}
   - component: {fileID: 879642821}
   m_Layer: 0
-  m_Name: EnterGardenPlaceholderText
+  m_Name: EnterGardenErrorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BLAblabla
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 942660298}
   - component: {fileID: 942660297}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: HomeBaseErrorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BLAblabla
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1489,13 +1489,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 942660297}
-    characterCount: 9
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1532,7 +1532,7 @@ GameObject:
   - component: {fileID: 1052882946}
   - component: {fileID: 1052882945}
   m_Layer: 0
-  m_Name: Placeholder
+  m_Name: PlaceholderSeedling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1843,7 +1843,7 @@ GameObject:
   - component: {fileID: 1128510192}
   - component: {fileID: 1128510191}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: SetHomeBaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,7 +2026,7 @@ GameObject:
   - component: {fileID: 1187201133}
   - component: {fileID: 1187201132}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: SetHomeBaseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2303,6 +2303,7 @@ MonoBehaviour:
   thisButton: {fileID: 1317007880}
   mandetoryTextField: {fileID: 211982230}
   errorTextField: {fileID: 1386828615}
+  errorMessage: Bitte gib deinen Namen ein
   currentPanel: {fileID: 1556643092}
   nextPanel: {fileID: 398586814}
 --- !u!1 &1342419263
@@ -2317,6 +2318,7 @@ GameObject:
   - component: {fileID: 1342419267}
   - component: {fileID: 1342419266}
   - component: {fileID: 1342419265}
+  - component: {fileID: 1342419268}
   m_Layer: 0
   m_Name: ButtonOnGardenPanel
   m_TagString: Untagged
@@ -2386,29 +2388,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1342419266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 398586814}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1860669238}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1342419266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2445,6 +2425,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342419263}
   m_CullTransparentMesh: 0
+--- !u!114 &1342419268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342419263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4267afc4fd97270409f509e860ea8f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisButton: {fileID: 1342419265}
+  mandetoryTextField: {fileID: 1698560204}
+  errorTextField: {fileID: 879642821}
+  errorMessage: Dein Garten braucht einen Namen
+  currentPanel: {fileID: 398586814}
+  nextPanel: {fileID: 1860669238}
 --- !u!1 &1386828613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,7 +2610,7 @@ GameObject:
   - component: {fileID: 1397649960}
   - component: {fileID: 1397649959}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: NextButtonTextOnHomeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2767,8 +2765,9 @@ GameObject:
   - component: {fileID: 1398270425}
   - component: {fileID: 1398270424}
   - component: {fileID: 1398270423}
+  - component: {fileID: 1398270426}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ButtonOnSeedlingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2836,29 +2835,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1398270424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1860669238}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1735863874}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1398270424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2895,6 +2872,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398270421}
   m_CullTransparentMesh: 0
+--- !u!114 &1398270426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398270421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4267afc4fd97270409f509e860ea8f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisButton: {fileID: 1398270423}
+  mandetoryTextField: {fileID: 1798061004}
+  errorTextField: {fileID: 1501623362}
+  errorMessage: Ein Namenloser Setzling ist ein trauriger Setzling
+  currentPanel: {fileID: 1860669238}
+  nextPanel: {fileID: 1735863874}
 --- !u!1 &1410035164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2902,7 @@ GameObject:
   - component: {fileID: 1410035167}
   - component: {fileID: 1410035166}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: NextButtonTextOnSeedlingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3062,7 +3057,7 @@ GameObject:
   - component: {fileID: 1501623363}
   - component: {fileID: 1501623362}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: EnterSeedlingErrorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3105,7 +3100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BLAblabla
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3916,7 +3911,7 @@ GameObject:
   - component: {fileID: 1735863877}
   - component: {fileID: 1735863876}
   m_Layer: 0
-  m_Name: Panel4
+  m_Name: Panel_SetHomeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3992,7 +3987,7 @@ GameObject:
   - component: {fileID: 1740916897}
   - component: {fileID: 1740916896}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: NextButtonTextOnGardenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4148,7 +4143,7 @@ GameObject:
   - component: {fileID: 1762601709}
   - component: {fileID: 1762601708}
   m_Layer: 0
-  m_Name: Button
+  m_Name: NextButtonOnHomeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4287,7 +4282,7 @@ GameObject:
   - component: {fileID: 1798061005}
   - component: {fileID: 1798061004}
   m_Layer: 0
-  m_Name: Text
+  m_Name: RequestSeedlingField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4597,7 +4592,7 @@ GameObject:
   - component: {fileID: 1860669241}
   - component: {fileID: 1860669240}
   m_Layer: 0
-  m_Name: Panel3
+  m_Name: Panel_SetSeedling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
