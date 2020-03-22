@@ -8,11 +8,13 @@ namespace Managers
 {
     public class SetupManager : MonoBehaviour
     {
-        [Header("Name Input Fields")] public TMP_InputField playerName;
+        [Header("Name Input Fields")]
+        public TMP_InputField playerName;
         public TMP_InputField gardenName;
         public TMP_InputField treeName;
 
-        [Header("Switchable Panels")] public GameObject panel1;
+        [Header("Switchable Panels")]
+        public GameObject panel1;
         public GameObject panel2;
         public GameObject panel3;
         public GameObject panel4;
@@ -91,6 +93,7 @@ namespace Managers
 
         public void SaveHomeLocation()
         {
+            //Todo GPS saving
             this.panel4.SetActive(false);
             SetupCompleted();
         }
