@@ -8,6 +8,9 @@ public class UIHomeScreen : MonoBehaviour
 {
 
     public GameObject overlay;
+    public GameObject credits;
+    public GameObject settings;
+    public GameObject homeScreen;
 
     public TextMeshProUGUI healthCurValue;
     public TextMeshProUGUI healthMaxValue;
@@ -27,6 +30,26 @@ public class UIHomeScreen : MonoBehaviour
     public void OpenSettings()
     {
         // TODO
+        this.settings.SetActive(true);
+        this.homeScreen.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        this.credits.SetActive(true);
+        this.settings.SetActive(false);
+    }
+
+    public void CloseSettings()
+    {
+        this.homeScreen.SetActive(true);
+        this.settings.SetActive(false);
+    }
+
+    public void CloseCredits()
+    {
+        this.settings.SetActive(true);
+        this.credits.SetActive(false);
     }
 
     public void OpenStatistics()
