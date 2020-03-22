@@ -13,6 +13,7 @@ namespace Managers
     {
         public MyGarden Garden { get; private set; }
 
+        [HideInInspector]
         public string deviceID;
 
         HTTPManager.ServerResponse responseDelegate;

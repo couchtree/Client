@@ -54,7 +54,7 @@ namespace Managers
         {
             if (uuid == null)
             {
-                uuid = System.Guid.NewGuid().ToString();
+                uuid = GameManager.GetSHA512(GameManager.Instance.GetNetworkInterfaces());
                 Debug.Log("Generated UUID: '" + uuid + "'");
             }
             var url = "https://creative-two.com/api/v1/player/" + uuid + "/location/";
@@ -64,7 +64,7 @@ namespace Managers
 
         IEnumerator PostRequest(string url, string json, ServerResponse response)
         {
-            //Debug.Log("Sending to url: '" + url + "'\nMessage: '" + json + "'"); // TODO remove
+            Debug.Log("Sending to url: '" + url + "'\nMessage: '" + json + "'"); // TODO remove
             var uwr = new UnityWebRequest(url, "POST");
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
             uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
@@ -75,11 +75,12 @@ namespace Managers
 
             if (uwr.isNetworkError)
             {
-                response(uwr.error);
                 Debug.LogError("Error while Sending: " + uwr.error);
+                response(uwr.error);
             }
             else
             {
+                Debug.Log("Response from server: " + uwr.downloadHandler.text);
                 response(uwr.downloadHandler.text);
             }
         }
