@@ -80,17 +80,23 @@ public class TimeHandler : MonoBehaviour
 
     private void HandleServerRequest(string response)
     {
-        //Debug.Log("Response is: " + response);  // TODO remove
-        PostResponse responses;
+        Debug.Log("Response is: " + response);  // TODO remove
+        PostResponse responses = new PostResponse();
         try
         {
             responses =  JsonUtility.FromJson<PostResponse>(response);
+            Debug.Log("Parsed response: " + responses);
         }
         catch (Exception ex)
         {
             Debug.LogError("Failed to serialize message: '" + response +  "' with error: '" + ex.Message + "'");
             return;
         }
+        if (responses.nearby_players.Length == 0)
+        {
+            Debug.LogWarning("Empty response received.");
+        }
+
         // Decide on response according to answer from server
         if (responses.nearby_players[0].dist > maxDistanceFromHome)
         {

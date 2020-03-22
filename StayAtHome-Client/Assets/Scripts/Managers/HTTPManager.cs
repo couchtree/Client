@@ -28,22 +28,16 @@ namespace Managers
         public int dir; // -> enum [0:"n",1:"ne",2:"e",3:"se",4:"s",5:"sw",6:"w",7:"nw"]
         public float dist; // [m]
         public float vel_nearing; // clarify on type
-
-        public static PostResponseElement CreateFromJSON(string jsonString)
-        {
-            Debug.Log("Trying to desirealize: '" + jsonString + "'");
-            return JsonUtility.FromJson<PostResponseElement>(jsonString);
-        }
     }
 
     // Struct representing the Response Body-Element of the Backend-API for POST
     public struct PostResponse
     {
-        public List<PostResponseElement> nearby_players; // List of up nearby_players
+        public PostResponseElement[] nearby_players; // List of up nearby_players
 
-        public static PostResponse CreateFromJSON(string jsonString)
+        override public string ToString()
         {
-            return JsonUtility.FromJson<PostResponse>(jsonString);
+            return JsonUtility.ToJson(this);
         }
     }
 
@@ -87,6 +81,5 @@ namespace Managers
                 response(uwr.downloadHandler.text);
             }
         }
-
     }
 }
