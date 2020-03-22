@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Managers;
 
@@ -62,6 +63,18 @@ public class UIHomeScreen : MonoBehaviour
         this.overlay.SetActive(false);
     }
 
+    public void ToggleStatistics()
+    {
+        if(this.overlay.activeSelf)
+        {
+            this.CloseStatistics();
+        }
+        else
+        {
+            this.OpenStatistics();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +99,24 @@ public class UIHomeScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (this.credits.activeSelf)
+            {
+                this.CloseCredits();
+            }
+            else if (this.settings.activeSelf)
+            {
+                this.CloseSettings();
+            }
+            else if (this.overlay.activeSelf)
+            {
+                this.ToggleStatistics();
+            }
+            else if(this.homeScreen.activeSelf)
+            {
+                Application.Quit();
+            }
+        }
     }
 }
