@@ -31,9 +31,9 @@ namespace Managers
     }
 
     // Struct representing the Response Body-Element of the Backend-API for POST
-    public struct PostResponse
+    public class PostResponse
     {
-        public PostResponseElement[] nearby_players; // List of up nearby_players
+        public PostResponseElement[] nearby_players = new PostResponseElement[5]; // List of up nearby_players
 
         override public string ToString()
         {

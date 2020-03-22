@@ -14,22 +14,18 @@ namespace Core.Global
         public event AddBehavior AddBehaviorEvent;
         public event SubtractBehavior SubtractBehaviorEvent;
 
-        public Player player; // Player which counts the score.
+        private Player player; // Player which counts the score.
 
         private void OnStart()
         {
+            player = GetComponent<Player>();
             if (player == null)
             {
-                player = GetComponent<Player>();
-                if (player == null)
-                {
-                    Debug.LogError("No player assigned!");
-                }
-                else
-                {
-                    Debug.LogWarning("Retrieve player from gameobject.");
-                }
-
+                Debug.LogError("No player assigned!");
+            }
+            else
+            {
+                Debug.LogWarning("Retrieve player from gameobject.");
             }
         }
 

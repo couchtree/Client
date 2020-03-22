@@ -33,21 +33,25 @@ public class TimeHandler : MonoBehaviour
         if (server == null)
         {
             Debug.LogError("No ServerManager found");
+            return;
         }
         gps = GetComponent<GPS_Tracking>();
         if (gps == null)
         {
             Debug.LogError("No GPS_Tracking found.");
+            return;
         }
         playerBehavior = GetComponent<PlayerBehavior>();
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
+            return;
         }
         player = GetComponent<Player>();
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
+            return;
         }
         responseDelegate = HandleServerRequest;
 
@@ -82,6 +86,16 @@ public class TimeHandler : MonoBehaviour
     {
         Debug.Log("Response is: " + response);  // TODO remove
         PostResponse responses = new PostResponse();
+        PostResponseElement ele = new PostResponseElement();
+        ele.dir = 5;
+        ele.dist = 10.0f;
+        ele.vel_nearing = 11.0f;
+        responses.nearby_players[0] = ele;
+        var json = JsonUtility.ToJson(responses);
+        Debug.Log("json: " + json);
+        var parsed = JsonUtility.FromJson<PostResponse>(json);
+        Debug.Log("parsed: " + parsed);
+
         try
         {
             responses =  JsonUtility.FromJson<PostResponse>(response);
@@ -92,11 +106,12 @@ public class TimeHandler : MonoBehaviour
             Debug.LogError("Failed to serialize message: '" + response +  "' with error: '" + ex.Message + "'");
             return;
         }
-        if (responses.nearby_players.Length == 0)
-        {
-            Debug.LogWarning("Empty response received.");
-        }
 
+        if (playerBehavior == null)
+        {
+            Debug.LogError("No playerBehavior present");
+            return;
+        }
         // Decide on response according to answer from server
         if (responses.nearby_players[0].dist > maxDistanceFromHome)
         {
