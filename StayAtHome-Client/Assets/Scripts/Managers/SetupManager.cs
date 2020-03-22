@@ -1,9 +1,5 @@
-﻿using System;
-using System.CodeDom;
-using Core.Garden;
-using Core.Interfaces;
+﻿using Core.Garden;
 using Core.Map;
-using Core.Models;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -23,11 +19,8 @@ namespace Managers
 
         private void Awake()
         {
-            var singleTonPlayer = Player.Instance;
-            var singleTonMyGarden = MyGarden.Instance;
-            var player = this.LoadPlayer();
-            var garden = this.LoadGarden();
-            if (player is null)
+            PlayerPrefs.DeleteAll();
+            if (!PlayerPrefs.HasKey("player.name") || PlayerPrefs.GetString("player.name") == "")
             {
                 panel1.SetActive(true);
                 panel2.SetActive(false);
@@ -35,7 +28,7 @@ namespace Managers
                 panel4.SetActive(false);
                 return;
             }
-            else if (garden is null)
+            else if (!PlayerPrefs.HasKey("garden.name") || PlayerPrefs.GetString("garden.name") == "")
             {
                 panel1.SetActive(false);
                 panel2.SetActive(true);
@@ -61,19 +54,9 @@ namespace Managers
             }
 
             player.Name = this.playerName.text;
-            SavegameManager.Save(player, player.GenerateSaveableData());
+            SavegameManager.SavePlayer(player);
             this.panel1.SetActive(false);
             this.panel2.SetActive(true);
-        }
-
-        private IDataForSerialization LoadPlayer()
-        {
-            return SavegameManager.LoadPlayer();
-        }
-
-        private IDataForSerialization LoadGarden()
-        {
-            return SavegameManager.LoadGarden();
         }
 
         public void SaveGardenName()
@@ -86,7 +69,7 @@ namespace Managers
             }
 
             garden.Name = this.gardenName.text;
-            SavegameManager.Save(garden, garden.GenerateSaveableData());
+            SavegameManager.SaveGarden(garden);
             this.panel2.SetActive(false);
             this.panel3.SetActive(true);
         }
@@ -101,7 +84,7 @@ namespace Managers
             }
 
             garden.tree.GetComponent<TreePlant>().Name = this.treeName.text;
-            SavegameManager.Save(garden, garden.GenerateSaveableData());
+            SavegameManager.SaveTree(garden.tree.GetComponent<TreePlant>());
             this.panel3.SetActive(false);
             this.panel4.SetActive(true);
         }
