@@ -40,9 +40,10 @@ public class GPS_Tracking : MonoBehaviour
         {
             StartCoroutine(InitializeGPS());
         }
-#endif
-        //throw new System.NotImplementedException();
+#else
         Debug.LogWarning("GPS not implemented.");
+#endif
+        yield return null;
     }
 
 
