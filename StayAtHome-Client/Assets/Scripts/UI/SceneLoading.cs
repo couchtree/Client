@@ -16,7 +16,7 @@ namespace UI
             //LoadScene(2);
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
-                LoadScene(1, 5.8f);
+                LoadScene(1, 2.8f);
 
             }
         }

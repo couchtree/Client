@@ -1,6 +1,5 @@
 echo "Pull Client..."
 git pull
-git submodule update --init --recursive
+git submodule update --init --recursive --remote
 echo "Pull Illustration..."
-cd StayAtHome-Client/Assets/Sprites/Illustrations
-git pull
+git submodule update --remote

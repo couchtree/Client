@@ -1,3 +1,4 @@
 [submodule "StayAtHome-Client/Assets/Sprites/Illustrations"]
 	path = StayAtHome-Client/Assets/Sprites/Illustrations
 	url = https://github.com/stayathome1761/Illustrations
+	branch = master
