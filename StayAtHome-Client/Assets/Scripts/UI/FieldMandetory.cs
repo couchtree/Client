@@ -10,7 +10,7 @@ public class FieldMandetory : MonoBehaviour
     public TextMeshProUGUI mandetoryTextField;
 
     public TextMeshProUGUI errorTextField;
-
+    public string errorMessage;
     public GameObject currentPanel;
     public GameObject nextPanel;
 
@@ -35,7 +35,7 @@ public class FieldMandetory : MonoBehaviour
         if (mandetoryTextField.text == "" || mandetoryTextField.text == defaultText)
         {
             Debug.LogWarning("Empty field.");
-            errorTextField.SetText("Please enter your name");
+            errorTextField.SetText(errorMessage);
         }
         else
         {
