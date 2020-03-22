@@ -27,6 +27,10 @@ namespace Managers
                 FileStream stream = new FileStream(GetSavePath(Player.filename), FileMode.Open);
                 PlayerData playerData = GetBinaryFormatter().Deserialize(stream) as PlayerData;
                 stream.Close();
+                if (playerData is null)
+                {
+                    return null;
+                }
                 playerData.loadFromData();
 
                 return playerData;
