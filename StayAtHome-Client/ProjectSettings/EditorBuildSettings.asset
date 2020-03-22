@@ -17,14 +17,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/Garden.unity
+    guid: 797705d7c1d617747bd64ad5f652c5c0
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 8594bccd4e10340dd88059f342ee4905
   - enabled: 1
     path: Assets/Scenes/GardenSetup.unity
     guid: c09f369e283c3415bbc5e901274bd7ca
   - enabled: 1
     path: Assets/Scenes/HomeScene.unity
     guid: 6aed14b6a95d6ac4a9c65c40a9f2b3fb
-- enabled: 1
-    path: Assets/Scenes/Garden.unity
-    guid: 797705d7c1d617747bd64ad5f652c5c0
-
   m_configObjects: {}

@@ -8,11 +8,17 @@ namespace UI
 {
     public class SceneLoading : MonoBehaviour
     {
-        [SerializeField] private Image _progressBar;
-
+        //[SerializeField] private Image _progressBar;
+        Scene scene;
         private void Start()
         {
+            
             //LoadScene(2);
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                LoadScene(1, 5.8f);
+
+            }
         }
 
         public void LoadScene(int scene)
@@ -20,9 +26,9 @@ namespace UI
             StartCoroutine(LoadAsyncOperation(scene));
         }
 
-        public void LoadSceneOverMenu(int scene)
+        public void LoadScene(int scene,float seconds)
         {
-            SceneManager.LoadScene(scene);
+            StartCoroutine(WaitWithSceneLoading(scene, seconds));
         }
 
         private IEnumerator LoadAsyncOperation(int scene)
@@ -32,11 +38,18 @@ namespace UI
 
             while (!nextScene.isDone)
             {
-                _progressBar.fillAmount = nextScene.progress;
+                //_progressBar.fillAmount = nextScene.progress;
                 yield return new WaitForEndOfFrame();
             }
             
             yield return new WaitForEndOfFrame();
         }
+
+        private IEnumerator WaitWithSceneLoading(int scene, float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            SceneManager.LoadScene(scene);
+        }
+
     }
 }
