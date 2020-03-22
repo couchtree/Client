@@ -26,7 +26,7 @@ namespace Managers
         private void Awake()
         {
             this.errorPanel.SetActive(false);
-            PlayerPrefs.DeleteAll();
+            
             if (!PlayerPrefs.HasKey("player.name") || PlayerPrefs.GetString("player.name") == "")
             {
                 panel1.SetActive(true);
