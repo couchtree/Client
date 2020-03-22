@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Garden.unity
     guid: 797705d7c1d617747bd64ad5f652c5c0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 8594bccd4e10340dd88059f342ee4905
   - enabled: 0
@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/HomeScene.unity
     guid: 6aed14b6a95d6ac4a9c65c40a9f2b3fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StoryScreen.unity
     guid: 0ebcc3e20cb514d4cbaeec7c9b35203a
   m_configObjects: {}
