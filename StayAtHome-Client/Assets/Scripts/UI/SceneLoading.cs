@@ -20,6 +20,11 @@ namespace UI
             StartCoroutine(LoadAsyncOperation(scene));
         }
 
+        public void LoadSceneOverMenu(int scene)
+        {
+            SceneManager.LoadScene(scene);
+        }
+
         private IEnumerator LoadAsyncOperation(int scene)
         {
             // Scene will automatic be loaded when its loaded...
