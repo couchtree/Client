@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 1054477385}
   - component: {fileID: 1054477384}
   - component: {fileID: 1054477386}
+  - component: {fileID: 1054477387}
   m_Layer: 5
   m_Name: StoryScreen
   m_TagString: Untagged
@@ -669,6 +670,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 408728163}
+--- !u!114 &1054477387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054477382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab6c9f6003c8564183f9b8a65b066e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1248261866
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,8 +717,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293.35, y: -920.51}
-  m_SizeDelta: {x: 493.3, y: 307.78}
+  m_AnchoredPosition: {x: 333.4, y: -950}
+  m_SizeDelta: {x: 413.2, y: 248.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1248261868
 MonoBehaviour:

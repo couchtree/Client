@@ -116,7 +116,7 @@ namespace Managers
         private void SetupCompleted()
         {
             SceneLoading sceneLoading = GetComponent<SceneLoading>();
-            sceneLoading.LoadScene(2);
+            sceneLoading.LoadScene(3);
         }
 
         private void hideError()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UI;
 
 public class StoryScreen : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class StoryScreen : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Here must stand the call to move to back to the next scene");
+            SceneLoading sceneLoading = GetComponent<SceneLoading>();
+            sceneLoading.LoadScene(2);
         }
     }
 }
