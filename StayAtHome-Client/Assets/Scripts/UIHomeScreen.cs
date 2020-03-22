@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Managers;
 
@@ -85,9 +86,38 @@ public class UIHomeScreen : MonoBehaviour
         this.diseaseMaxValue.text = GameManager.Instance.Garden.MaxDisease.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (this.credits.activeSelf)
+            {
+                this.CloseCredits();
+            }
+            else if (this.settings.activeSelf)
+            {
+                this.CloseSettings();
+            }
+            else if (this.overlay.activeSelf)
+            {
+                TogglePlantInformation();
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
+    }
+
+    public void TogglePlantInformation()
+    {
+        if (this.overlay.activeSelf)
+        {
+            this.CloseStatistics();
+        }
+        else
+        {
+            this.OpenStatistics();
+        }
     }
 }
