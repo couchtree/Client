@@ -7,7 +7,7 @@ namespace Core.Models
     [Serializable]
     public class PlayerData : IDataForSerialization
     {
-        public String playerName;
+        public string playerName;
         public float lat;
         public float lon;
 

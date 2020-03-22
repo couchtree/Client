@@ -10,8 +10,8 @@ namespace Core.Models
     {
         public List<int> plantEvolutions;
         public int treeEvolution;
-        public String treeName;
-        public String gardenName;
+        public string treeName;
+        public string gardenName;
 
         public GardenData(MyGarden myGarden)
         {

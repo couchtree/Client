@@ -43,6 +43,7 @@ namespace Managers
                 FileStream stream = new FileStream(GetSavePath(MyGarden.filename), FileMode.Open);
                 GardenData gardenData = GetBinaryFormatter().Deserialize(stream) as GardenData;
                 stream.Close();
+                Debug.Log(gardenData);
                 if (gardenData is null)
                 {
                     return null;
