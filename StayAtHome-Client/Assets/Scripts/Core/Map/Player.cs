@@ -3,10 +3,11 @@ using Core.Interfaces;
 using Managers;
 using Core.Models;
 using UnityEngine;
+using Core.DesignPattern;
 
 namespace Core.Map
 {
-    public class Player : MonoBehaviour, ISaveable
+    public class Player : Singleton<Player>, ISaveable
     {
         public const String filename = "player";
 

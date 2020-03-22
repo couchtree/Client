@@ -516,10 +516,10 @@ GameObject:
   - component: {fileID: 972367341}
   - component: {fileID: 972367340}
   - component: {fileID: 972367339}
+  - component: {fileID: 972367345}
   - component: {fileID: 972367344}
   - component: {fileID: 972367342}
   - component: {fileID: 972367343}
-  - component: {fileID: 972367345}
   - component: {fileID: 972367346}
   m_Layer: 0
   m_Name: Main Camera
@@ -630,7 +630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc24a503f1e2314e9ff199c8f6ebba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 708964880}
   maxDistanceFromHome: 10
   period: 0.1
 --- !u!114 &972367345
@@ -645,7 +644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e496e3900cfee474d80e45ccf510b25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!114 &972367346
 MonoBehaviour:
   m_ObjectHideFlags: 0

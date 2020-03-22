@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Map;
+using Core.DesignPattern;
 
 namespace Core.Global
 {
-    public class PlayerBehavior : MonoBehaviour
+    public class PlayerBehavior : Singleton<PlayerBehavior>
     {
         // Use these if any other side effect occurs (other than losing points)
         public delegate void AddBehavior();
@@ -14,30 +15,15 @@ namespace Core.Global
         public event AddBehavior AddBehaviorEvent;
         public event SubtractBehavior SubtractBehaviorEvent;
 
-        private Player player; // Player which counts the score.
-
-        private void OnStart()
-        {
-            player = GetComponent<Player>();
-            if (player == null)
-            {
-                Debug.LogError("No player assigned!");
-            }
-            else
-            {
-                Debug.LogWarning("Retrieve player from gameobject.");
-            }
-        }
-
         public void AddPoints(int bonusAmount)
         {
-            player.ChangeScore(bonusAmount);
+            Player.Instance.ChangeScore(bonusAmount);
             AddBehaviorEvent?.Invoke();
         }
 
         public void SubtractPoints(int penaltyAmount)
         {
-            player.ChangeScore(-penaltyAmount);
+            Player.Instance.ChangeScore(-penaltyAmount);
             SubtractBehaviorEvent?.Invoke();
         }
     }

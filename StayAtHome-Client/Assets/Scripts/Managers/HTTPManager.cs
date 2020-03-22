@@ -44,7 +44,6 @@ namespace Managers
         }
     }
 
-
     public class HTTPManager : Singleton<HTTPManager>
     {
         public delegate void ServerResponse(string response);
@@ -65,7 +64,7 @@ namespace Managers
 
         IEnumerator PostRequest(string url, string json, ServerResponse response)
         {
-            Debug.Log("Sending to url: '" + url + "'\nMessage: '" + json + "'");
+            //Debug.Log("Sending to url: '" + url + "'\nMessage: '" + json + "'"); // TODO remove
             var uwr = new UnityWebRequest(url, "POST");
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
             uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);

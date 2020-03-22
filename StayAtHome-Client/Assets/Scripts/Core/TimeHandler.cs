@@ -10,6 +10,7 @@ using Core.Map;
 public class TimeHandler : MonoBehaviour
 {
     private GPS_Tracking gps;
+
     private HTTPManager server;
 
     private Player player;
@@ -41,7 +42,7 @@ public class TimeHandler : MonoBehaviour
             Debug.LogError("No GPS_Tracking found.");
             return;
         }
-        playerBehavior = GetComponent<PlayerBehavior>();
+        playerBehavior = PlayerBehavior.Instance;
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
@@ -70,7 +71,7 @@ public class TimeHandler : MonoBehaviour
 
     private void RequestUpdate()
     {
-        // Request current lan, lon from PGS
+        // Request current lat, lon from GPS
         PostRequest request = new PostRequest();
         request.lat = gps.GetLatitude();
         request.lon = gps.GetLongitude();
@@ -84,13 +85,13 @@ public class TimeHandler : MonoBehaviour
 
     private void HandleServerRequest(string response)
     {
-        Debug.Log("Response is: " + response);  // TODO remove
+        //Debug.Log("Response is: " + response);  // TODO remove
         PostResponse responses = new PostResponse();
 
         try
         {
             responses =  JsonUtility.FromJson<PostResponse>(response);
-            Debug.Log("Parsed response: " + responses);
+            //Debug.Log("Parsed response: " + responses); // TODO remove
         }
         catch (Exception ex)
         {
@@ -103,14 +104,15 @@ public class TimeHandler : MonoBehaviour
             Debug.LogError("No playerBehavior present");
             return;
         }
+
         // Decide on response according to answer from server
         if (responses.nearby_players[0].dist > maxDistanceFromHome)
         {
-            playerBehavior.SubtractPoints(10);
+            this.playerBehavior.SubtractPoints(10);
         }
         else
         {
-            playerBehavior.AddPoints(10);
+            PlayerBehavior.Instance.AddPoints(10);
         }
     }
 }
