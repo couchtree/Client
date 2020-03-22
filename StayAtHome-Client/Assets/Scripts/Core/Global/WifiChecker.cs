@@ -5,7 +5,9 @@ namespace Core.Global
 {
     public class WifiChecker : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI info; //Remove
+        [SerializeField] 
+        TextMeshProUGUI info; //Remove
+        
         string m_ReachabilityText;
 
         void Update()

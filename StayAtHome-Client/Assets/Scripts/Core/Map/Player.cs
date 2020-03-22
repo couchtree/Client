@@ -13,6 +13,8 @@ namespace Core.Map
         public string Name { get; set; }
         public float lat { get; set; }
         public float lon { get; set; }
+        public float workLat { get; set; }
+        public float WorkLon { get; set; }
         public int score { get; set; }
 
         private protected override void Awake()
