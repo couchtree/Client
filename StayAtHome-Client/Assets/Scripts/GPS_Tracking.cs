@@ -41,7 +41,8 @@ public class GPS_Tracking : MonoBehaviour
             StartCoroutine(InitializeGPS());
         }
 #endif
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+        Debug.LogWarning("GPS not implemented.");
     }
 
 

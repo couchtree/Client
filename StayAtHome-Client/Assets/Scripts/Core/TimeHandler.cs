@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Managers;
 using TMPro;
@@ -8,10 +9,8 @@ using Core.Map;
 
 public class TimeHandler : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI info; // Only for debugging
-
     private GPS_Tracking gps;
+
     private HTTPManager server;
 
     private Player player;
@@ -35,25 +34,25 @@ public class TimeHandler : MonoBehaviour
         if (server == null)
         {
             Debug.LogError("No ServerManager found");
-            info.SetText("No ServerManager found");
+            return;
         }
         gps = GetComponent<GPS_Tracking>();
         if (gps == null)
         {
             Debug.LogError("No GPS_Tracking found.");
-            info.SetText("No GPS_Tracking found.");
+            return;
         }
-        playerBehavior = GetComponent<PlayerBehavior>();
+        playerBehavior = PlayerBehavior.Instance;
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
-            info.SetText("No PlayerBehavior found.");
+            return;
         }
         player = GetComponent<Player>();
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
-            info.SetText("No PlayerBehavior found.");
+            return;
         }
         responseDelegate = HandleServerRequest;
 
@@ -65,7 +64,6 @@ public class TimeHandler : MonoBehaviour
     {
         if (Time.time > nextActionTime && isInitialized)  
         {
-            info.SetText("Send Request");
             nextActionTime += period;
             RequestUpdate();
         }
@@ -73,11 +71,13 @@ public class TimeHandler : MonoBehaviour
 
     private void RequestUpdate()
     {
-        // Request current lan, lon from PGS
+        // Request current lat, lon from GPS
         PostRequest request = new PostRequest();
         request.lat = gps.GetLatitude();
         request.lon = gps.GetLongitude();
         request.at_home = player.AtHomeBase(request.lat, request.lon);
+        request.tracked = true;
+        // request.timestamp = (int)(System.DateTime.UtcNow.Subtract(new System.DateTime(1970, 1, 1)).TotalSeconds); TODO Enable as soon as backend is ready
 
         // Send message to server
         server.SendRequest(JsonUtility.ToJson(request), responseDelegate);
@@ -85,17 +85,34 @@ public class TimeHandler : MonoBehaviour
 
     private void HandleServerRequest(string response)
     {
-        Debug.Log("Response is: " + response);
-        info.SetText("Response is:" + response); //Remove
-        PostResponse responses =  JsonUtility.FromJson<PostResponse>(response);
-        // Decide on response according to answer from server
-        if (responses.responseElements[0].dist > maxDistanceFromHome)
+        //Debug.Log("Response is: " + response);  // TODO remove
+        PostResponse responses = new PostResponse();
+
+        try
         {
-            playerBehavior.SubtractPoints(10);
+            responses =  JsonUtility.FromJson<PostResponse>(response);
+            //Debug.Log("Parsed response: " + responses); // TODO remove
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Failed to serialize message: '" + response +  "' with error: '" + ex.Message + "'");
+            return;
+        }
+
+        if (playerBehavior == null)
+        {
+            Debug.LogError("No playerBehavior present");
+            return;
+        }
+
+        // Decide on response according to answer from server
+        if (responses.nearby_players[0].dist > maxDistanceFromHome)
+        {
+            this.playerBehavior.SubtractPoints(10);
         }
         else
         {
-            playerBehavior.AddPoints(10);
+            PlayerBehavior.Instance.AddPoints(10);
         }
     }
 }
