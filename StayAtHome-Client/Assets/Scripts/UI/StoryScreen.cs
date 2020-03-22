@@ -23,7 +23,7 @@ public class StoryScreen : MonoBehaviour
         storyParts.Add(
             "Pflanzen in geschlossenen Räumen, mit wenig Menschen in der Nähe seien weniger anfällig. Daher werde jeder Bürger gebeten sich so viel wie möglich daheim aufzuhalten und eigene Pflanzen zu halten, um die Plage nicht zu fördern, bis diese vorüber ist und um jeglichen Verlust an Pflanzen so niedrig wie möglich zu halten.");
         storyParts.Add(
-            "Natürlich darf man sich weiterhin im Freien aufhalten, dennoch sollte dies allein und nicht zu lange geschehen, um die eigenen Pflanzen zu schützen. Es ist wichtig zusammenzuhalten, jeder sollte sich gegenseitig Unterstützung, um neben der Pflanzenpflege anderen wichtigen Erledigungen nachkommen zu können, ohne dabei die aktuelle Lage zu verschlimmern.");
+            "Natürlich darf man sich weiterhin im Freien aufhalten, dennoch sollte dies allein und nicht zu lange geschehen, um die eigenen Pflanzen zu schützen. Es ist wichtig zusammenzuhalten, jeder sollte sich gegenseitig unterstützen, um neben der Pflanzenpflege anderen wichtigen Erledigungen nachkommen zu können, ohne dabei die aktuelle Lage zu verschlimmern.");
         storyParts.Add(
             "Am Ende des Artikel liest du noch den Satz: “Pflanzt Bäume und verschiedene Pflanzen, bleibt zu Hause, kümmert euch um sie und seid Helden!”. Du merkst, dass alle eine gemeinsame Mission haben und dass du deinen Beitrag dazu leisten möchtest.");
         storyParts.Add(

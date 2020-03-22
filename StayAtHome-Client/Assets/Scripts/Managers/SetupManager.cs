@@ -1,10 +1,8 @@
-﻿using System;
-using Core.Garden;
+﻿using Core.Garden;
 using Core.Map;
 using TMPro;
 using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Managers
 {
@@ -69,12 +67,16 @@ namespace Managers
 
         private void Update()
         {
-            if (!GPS_Tracking.isGpsEnabled())
+            if (GPS_Tracking.isGpsEnabled())
             {
-                Debug.Log("GPS NOT ENABLED!!!!!!!!");
-                gpsButton.SetActive(false);
-                gpsDeactivatedInfo.SetActive(true);
+                gpsButton.SetActive(true);
+                gpsDeactivatedInfo.SetActive(false);
+                return;
             }
+
+            Debug.Log("GPS NOT ENABLED!!!!!!!!");
+            gpsButton.SetActive(false);
+            gpsDeactivatedInfo.SetActive(true);
         }
 
         public void SavePlayerName()
@@ -151,6 +153,7 @@ namespace Managers
                 this.ShowError("Du bist mit keinem WLAN verbunden. Bist du wirklich zuhause du Lümmel?");
                 return;
             }
+            
             var gps = gameObject.GetComponent<GPS_Tracking>();
             var player = gameObject.GetComponent<Player>();
             Debug.Log("gps setzen");
