@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.Map;
+using Core.DesignPattern;
 
 namespace Core.Global
 {
-    public class PlayerBehavior : MonoBehaviour
+    public class PlayerBehavior : Singleton<PlayerBehavior>
     {
         // Use these if any other side effect occurs (other than losing points)
         public delegate void AddBehavior();
@@ -13,24 +15,16 @@ namespace Core.Global
         public event AddBehavior AddBehaviorEvent;
         public event SubtractBehavior SubtractBehaviorEvent;
 
-        private int _prevEvent;
-
-        public int BehaviorPoints { get; private set; }
-
         public void AddPoints(int bonusAmount)
         {
-            this.BehaviorPoints += bonusAmount;
+            Player.Instance.ChangeScore(bonusAmount);
             AddBehaviorEvent?.Invoke();
-
-            _prevEvent = 1;
         }
 
         public void SubtractPoints(int penaltyAmount)
         {
-            this.BehaviorPoints -= penaltyAmount;
+            Player.Instance.ChangeScore(-penaltyAmount);
             SubtractBehaviorEvent?.Invoke();
-
-            _prevEvent = -1;
         }
     }
 }

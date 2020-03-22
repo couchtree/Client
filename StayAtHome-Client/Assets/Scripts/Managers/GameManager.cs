@@ -5,17 +5,25 @@ using Core.DesignPattern;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using Core.Garden;
 
 namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
+        public MyGarden Garden { get; private set; }
+
+        [HideInInspector]
         public string deviceID;
 
         HTTPManager.ServerResponse responseDelegate;
         private protected override void Awake()
         {
             base.Awake();
+
+            this.Garden = new MyGarden();
+
+            // Set values from server?
         }
 
         private void Start()
@@ -24,11 +32,6 @@ namespace Managers
             
             deviceID = GetSHA512(GetNetworkInterfaces());
             Debug.Log("DeviceID: " + deviceID);
-            
-            responseDelegate = handleRespone;
-
-            // HTTP Test
-            HTTPManager.Instance.SendRequest("{\"test\":\"djhgfusdhufg\"}", responseDelegate);
         }
 
         public string GetNetworkInterfaces()
@@ -76,11 +79,6 @@ namespace Managers
             }
          
             return strBuilder.ToString();
-        }
-    
-        public void handleRespone(string response)
-        {
-            Debug.Log("Response from Server: " + response);
         }
     }
 }

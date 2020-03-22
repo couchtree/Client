@@ -40,8 +40,10 @@ public class GPS_Tracking : MonoBehaviour
         {
             StartCoroutine(InitializeGPS());
         }
+#else
+        Debug.LogWarning("GPS not implemented.");
 #endif
-        throw new System.NotImplementedException();
+        yield return null;
     }
 
 
@@ -52,7 +54,7 @@ public class GPS_Tracking : MonoBehaviour
 
 
         // First, check if user has location service enabled
-        if (!Input.location.isEnabledByUser)
+        if (!isGpsEnabled())
         {
             info.SetText("GPS is required");
             yield return 1;
@@ -95,6 +97,11 @@ public class GPS_Tracking : MonoBehaviour
             // Stop service if there is no need to query location updates continuously
             Input.location.Stop();
         }
+    }
+
+    public static bool isGpsEnabled()
+    {
+        return Input.location.isEnabledByUser;
     }
 
     void SetLatAndLong()
