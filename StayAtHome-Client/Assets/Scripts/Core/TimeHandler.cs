@@ -85,13 +85,13 @@ public class TimeHandler : MonoBehaviour
 
     private void HandleServerRequest(string response)
     {
-        //Debug.Log("Response is: " + response);  // TODO remove
+        Debug.Log("Response is: " + response);  // TODO remove
         PostResponse responses = new PostResponse();
 
         try
         {
             responses =  JsonUtility.FromJson<PostResponse>(response);
-            //Debug.Log("Parsed response: " + responses); // TODO remove
+            Debug.Log("Parsed response: " + responses); // TODO remove
         }
         catch (Exception ex)
         {
