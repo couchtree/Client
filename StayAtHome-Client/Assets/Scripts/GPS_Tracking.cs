@@ -6,7 +6,7 @@ using TMPro;
 #if PLATFORM_ANDROID
 using UnityEngine.Android;
 #endif
-
+using UnityEngine.iOS;
 
 public class GPS_Tracking : MonoBehaviour
 {
@@ -41,6 +41,8 @@ public class GPS_Tracking : MonoBehaviour
             StartCoroutine(InitializeGPS());
         }
 #else
+            StartCoroutine(InitializeGPS());
+        
         Debug.LogWarning("GPS not implemented.");
 #endif
         yield return null;
