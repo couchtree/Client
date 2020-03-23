@@ -17,7 +17,6 @@ namespace UI
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 LoadScene(1, 2.8f);
-
             }
         }
 
@@ -26,7 +25,7 @@ namespace UI
             StartCoroutine(LoadAsyncOperation(scene));
         }
 
-        public void LoadScene(int scene,float seconds)
+        public void LoadScene(int scene, float seconds)
         {
             StartCoroutine(WaitWithSceneLoading(scene, seconds));
         }
@@ -48,6 +47,11 @@ namespace UI
         private IEnumerator WaitWithSceneLoading(int scene, float seconds)
         {
             yield return new WaitForSeconds(seconds);
+            // Assume that if the garden- and tree-name was saved all other this were saved as well
+            if (PlayerPrefs.HasKey("garden.name") && PlayerPrefs.HasKey("tree.name"))
+            {
+                scene += 1;
+            }
             SceneManager.LoadScene(scene);
         }
 
