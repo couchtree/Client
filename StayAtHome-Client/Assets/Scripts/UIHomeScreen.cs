@@ -12,6 +12,8 @@ public class UIHomeScreen : MonoBehaviour
     public GameObject credits;
     public GameObject settings;
     public GameObject homeScreen;
+    public GameObject impressumScreen;
+    public GameObject privacyScreen;
 
     public TextMeshProUGUI healthCurValue;
     public TextMeshProUGUI healthMaxValue;
@@ -63,6 +65,31 @@ public class UIHomeScreen : MonoBehaviour
         this.overlay.SetActive(false);
     }
 
+
+    public void OpenImpressum()
+    {
+        this.impressumScreen.SetActive(true);
+        this.settings.SetActive(false);
+    }
+
+    public void CloseImpressum()
+    {
+        this.impressumScreen.SetActive(false);
+        this.settings.SetActive(true);
+    }
+
+    public void OpenPrivacy()
+    {
+        this.privacyScreen.SetActive(true);
+        this.settings.SetActive(false);
+    }
+
+    public void ClosePrivacy()
+    {
+        this.privacyScreen.SetActive(false);
+        this.settings.SetActive(true);
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
