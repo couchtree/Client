@@ -6915,7 +6915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c2d8b6aa805c429277f3c8a371555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: {fileID: 1766442526}
   deviceID: 
 --- !u!4 &1531322627
 Transform:
@@ -8359,6 +8358,8 @@ MonoBehaviour:
   dungMaxValue: {fileID: 385388214}
   diseaseCurValue: {fileID: 350480522}
   diseaseMaxValue: {fileID: 573889767}
+  playerNameTextField: {fileID: 1766442526}
+  gardenNameTextField: {fileID: 1730610882}
 --- !u!1 &1795413345
 GameObject:
   m_ObjectHideFlags: 0

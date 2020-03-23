@@ -7,8 +7,6 @@ using System.Security.Cryptography;
 using System.Text;
 using Core.Garden;
 using Core.Map;
-using TMPro;
-using UnityEngine.Serialization;
 
 namespace Managers
 {
@@ -17,9 +15,6 @@ namespace Managers
         public MyGarden Garden { get; private set; }
         public Player Player { get; private set; }
 
-        [Header("Text references")] 
-        public TextMeshProUGUI playerName;
-        
         [HideInInspector]
         public string deviceID;
 
@@ -30,7 +25,6 @@ namespace Managers
 
             this.Garden = MyGarden.Instance;
             this.Player = Player.Instance;
-            this.playerName.text = Player.Name;
         }
 
         private void Start()

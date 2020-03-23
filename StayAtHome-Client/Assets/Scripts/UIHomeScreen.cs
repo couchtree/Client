@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Core.Garden;
+using Core.Map;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Managers;
 
 public class UIHomeScreen : MonoBehaviour
 {
-
     public GameObject overlay;
     public GameObject credits;
     public GameObject settings;
@@ -27,6 +25,10 @@ public class UIHomeScreen : MonoBehaviour
 
     public TextMeshProUGUI diseaseCurValue;
     public TextMeshProUGUI diseaseMaxValue;
+
+    [Header("Text references")]
+    public TextMeshProUGUI playerNameTextField;
+    public TextMeshProUGUI gardenNameTextField;
 
     public void OpenSettings()
     {
@@ -69,21 +71,24 @@ public class UIHomeScreen : MonoBehaviour
         this.overlay.SetActive(false);
         this.settings.SetActive(false);
         this.credits.SetActive(false);
+        
+        this.healthCurValue.text = MyGarden.Instance.Health.ToString();
+        this.healthMaxValue.text = MyGarden.Instance.MaxHealth.ToString();
 
-        this.healthCurValue.text = GameManager.Instance.Garden.Health.ToString();
-        this.healthMaxValue.text = GameManager.Instance.Garden.MaxHealth.ToString();
+        this.waterCurValue.text = MyGarden.Instance.Water.ToString();
+        this.waterMaxValue.text = MyGarden.Instance.MaxWater.ToString();
 
-        this.waterCurValue.text = GameManager.Instance.Garden.Water.ToString();
-        this.waterMaxValue.text = GameManager.Instance.Garden.MaxWater.ToString();
+        this.rankCurValue.text = MyGarden.Instance.Rank.ToString();
+        this.rankMaxValue.text = MyGarden.Instance.MaxRank.ToString();
 
-        this.rankCurValue.text = GameManager.Instance.Garden.Rank.ToString();
-        this.rankMaxValue.text = GameManager.Instance.Garden.MaxRank.ToString();
+        this.dungCurValue.text = MyGarden.Instance.Dung.ToString();
+        this.dungMaxValue.text = MyGarden.Instance.MaxDung.ToString();
 
-        this.dungCurValue.text = GameManager.Instance.Garden.Dung.ToString();
-        this.dungMaxValue.text = GameManager.Instance.Garden.MaxDung.ToString();
+        this.diseaseCurValue.text = MyGarden.Instance.Disease.ToString();
+        this.diseaseMaxValue.text = MyGarden.Instance.MaxDisease.ToString();
 
-        this.diseaseCurValue.text = GameManager.Instance.Garden.Disease.ToString();
-        this.diseaseMaxValue.text = GameManager.Instance.Garden.MaxDisease.ToString();
+        this.playerNameTextField.text = Player.Instance.Name;
+        this.gardenNameTextField.text = MyGarden.Instance.Name;
     }
 
     void Update()
