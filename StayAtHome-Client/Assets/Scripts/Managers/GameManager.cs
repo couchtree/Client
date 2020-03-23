@@ -6,13 +6,20 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 using Core.Garden;
+using Core.Map;
+using TMPro;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
         public MyGarden Garden { get; private set; }
+        public Player Player { get; private set; }
 
+        [Header("Text references")] 
+        public TextMeshProUGUI playerName;
+        
         [HideInInspector]
         public string deviceID;
 
@@ -21,9 +28,9 @@ namespace Managers
         {
             base.Awake();
 
-            this.Garden = new MyGarden();
-
-            // Set values from server?
+            this.Garden = MyGarden.Instance;
+            this.Player = Player.Instance;
+            this.playerName.text = Player.Name;
         }
 
         private void Start()

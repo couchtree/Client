@@ -6915,6 +6915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c2d8b6aa805c429277f3c8a371555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: {fileID: 1766442526}
   deviceID: 
 --- !u!4 &1531322627
 Transform:
@@ -8152,7 +8153,7 @@ GameObject:
   - component: {fileID: 1766442527}
   - component: {fileID: 1766442526}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PlayerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
