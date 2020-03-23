@@ -21,9 +21,7 @@ namespace Managers
         {
             base.Awake();
 
-            this.Garden = new MyGarden();
-
-            // Set values from server?
+            this.Garden = MyGarden.Instance;
         }
 
         private void Start()
