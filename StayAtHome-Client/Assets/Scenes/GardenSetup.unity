@@ -4534,6 +4534,7 @@ MonoBehaviour:
   plants:
   - {fileID: 0}
   tree: {fileID: 0}
+  treeNameField: {fileID: 0}
 --- !u!114 &1654905921
 MonoBehaviour:
   m_ObjectHideFlags: 0

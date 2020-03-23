@@ -2,13 +2,17 @@ using System.Collections.Generic;
 using Core.DesignPattern;
 using Core.Interfaces;
 using UnityEngine;
+using TMPro;
 
 namespace Core.Garden
 {
     public class MyGarden : Singleton<MyGarden>
     {
         public List<APlant> plants;
+        
         public GameObject tree;
+
+        public TextMeshProUGUI treeNameField;
 
         public string Name { get; set; }
 
@@ -35,18 +39,25 @@ namespace Core.Garden
 
             this.plants = new List<APlant>();
             this.tree = new GameObject("tree");
+            this.tree.transform.parent = this.transform;
             this.tree.AddComponent<TreePlant>();
+            LoadGarden();
         }
 
         protected void LoadGarden()
         {
-            if (!PlayerPrefs.HasKey("garden.name") && !PlayerPrefs.HasKey("tree.name"))
+            if (PlayerPrefs.HasKey("garden.name"))
             {
-                return;
+                this.Name = PlayerPrefs.GetString("garden.name");
             }
 
-            this.Name = PlayerPrefs.GetString("garden.name");
-            this.GetComponent<TreePlant>().Name = PlayerPrefs.GetString("tree.name");
+            if (PlayerPrefs.HasKey("tree.name") && PlayerPrefs.HasKey("tree.evolution"))
+            {
+                TreePlant treePlant = this.tree.GetComponent<TreePlant>();
+                treePlant.Name = PlayerPrefs.GetString("tree.name");
+                treePlant.EvolutionLevel = PlayerPrefs.GetInt("tree.evolution");
+                this.treeNameField.text = PlayerPrefs.GetString("tree.name");
+            }
         }
 
         public MyGarden()
