@@ -26,5 +26,29 @@ MonoBehaviour:
     m_Localized: Garden
     m_Metadata:
       m_Items: []
+  - m_Id: 3
+    m_Localized: "Health\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Localized: Rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Localized: Dung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: Disease
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: Sapling-Info
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

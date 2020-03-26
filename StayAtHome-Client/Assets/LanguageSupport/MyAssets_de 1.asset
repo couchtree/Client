@@ -26,5 +26,29 @@ MonoBehaviour:
     m_Localized: Garten
     m_Metadata:
       m_Items: []
+  - m_Id: 3
+    m_Localized: Gesundheit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Wasser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Localized: Rang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Localized: "D\xFCnger"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: Krankheit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: "B\xE4umchen-Info"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

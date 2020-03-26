@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
   m_Name: MyAssets Shared Data
   m_EditorClassIdentifier: 
-  m_NextAvailableId: 3
+  m_NextAvailableId: 9
   m_TableName: MyAssets
   m_TableNameGuidString: 5b44adc1b4ddf4a9c88ad01a15e8b9f6
   m_Entries:
@@ -22,6 +22,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2
     m_Key: garden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Key: health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Key: water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Key: rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Key: dung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Key: disease
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Key: sapling-info
     m_Metadata:
       m_Items: []
   m_Metadata:

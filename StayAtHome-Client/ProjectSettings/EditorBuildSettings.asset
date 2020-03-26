@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/4-gps.unity
     guid: f8fffec9a209b4752ae2d7004cc9f756
   - enabled: 0
@@ -35,5 +35,5 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: da52958bd9ac0458696568476e432f4b,
       type: 2}
-    com.unity.localization.settings: {fileID: 11400000, guid: 0acfac934d1394ff1bbaceef1a9733d7,
+    com.unity.localization.settings: {fileID: 11400000, guid: c78311c7ae24242768e608b9a34d3bd8,
       type: 2}
