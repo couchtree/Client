@@ -6026,7 +6026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &726853115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6062,7 +6062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bb3d5cff83cfd4e9104924760eb2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableDebugging: 1
+  enableDebugging: 0
   homeLat: {fileID: 1731340155}
   homeLon: {fileID: 911851607}
   currentLat: {fileID: 828106727}
@@ -12843,7 +12843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f8ab4bef3c417881fda88087b8a932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EvolutionLevel: 0
   treeNameText: {fileID: 1766442526}
 --- !u!4 &1786729413
 Transform:
