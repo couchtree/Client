@@ -13,22 +13,38 @@ namespace Core.Map
         public string Name
         {
             get {return data.name;}
-            set {data.name = value;}
+            set
+            {
+                data.name = value;
+                SavePlayer();
+            }
         }
         public float Lat
         {
             get {return data.lat;}
-            set {data.lat = value;}
+            set
+            {
+                data.lat = value;
+                SavePlayer();
+            }
         }
         public float Lon
         {
             get {return data.lon;}
-            set {data.lon = value;}
+            set
+            {
+                data.lon = value;
+                SavePlayer();
+            }
         }
         public int Score
         {
             get {return data.score;}
-            set {data.score = value;}
+            set
+            {
+                data.score = value;
+                SavePlayer();
+            }
         }
 
         private PlayerData data;
@@ -39,13 +55,17 @@ namespace Core.Map
             this.LoadPlayer();
         }
 
-        private void Update()
-        {
-        }
-
         public void ChangeScore(int amount)
         {
-            Score += amount;
+            // Ensure that the player score can not fall below zero
+            if (Score + amount < 0)
+            {
+                Score = 0;
+            }
+            else
+            {
+                Score += amount;   
+            }
         }
 
         public bool AtHomeBase(float lat, float lon)
@@ -61,10 +81,15 @@ namespace Core.Map
             return false;
         }
 
-        public void LoadPlayer()
+        private void LoadPlayer()
         {
             SavegameManager.LoadPlayer(out this.data);
             return;
+        }
+
+        private void SavePlayer()
+        {
+            SavegameManager.SavePlayer(this.data);
         }
     }
 }

@@ -9,10 +9,12 @@ using Core.Map;
 
 public class TimeHandler : MonoBehaviour
 {
+    [SerializeField]
     private GPS_Tracking gps;
 
     private HTTPManager server;
 
+    [SerializeField]
     private Player player;
 
     private PlayerBehavior playerBehavior;
@@ -25,18 +27,21 @@ public class TimeHandler : MonoBehaviour
     private bool isInitialized = false;
 
     private float nextActionTime = 0.0f;
-    public float period = 0.1f; // [s]
+
+    [Range(0.0f, 60.0f)]
+    public float period = 1.0f; // [s]
+
+    [Range(0, 100)]
+    public int scoreSteps = 10; // Amount the socre changes on a good or bad behaviour
 
     void Start()
     {
-        // Aquire Server Connect utility class
         server = HTTPManager.Instance;
         if (server == null)
         {
             Debug.LogError("No ServerManager found");
             return;
         }
-        gps = GetComponent<GPS_Tracking>();
         if (gps == null)
         {
             Debug.LogError("No GPS_Tracking found.");
@@ -48,7 +53,6 @@ public class TimeHandler : MonoBehaviour
             Debug.LogError("No PlayerBehavior found.");
             return;
         }
-        player = GetComponent<Player>();
         if (playerBehavior == null)
         {
             Debug.LogError("No PlayerBehavior found.");
@@ -83,19 +87,17 @@ public class TimeHandler : MonoBehaviour
         server.SendRequest(JsonUtility.ToJson(request), responseDelegate);
     }
 
-    private void HandleServerRequest(string response)
+    private void HandleServerRequest(string responseMsg)
     {
-        Debug.Log("Response is: " + response);  // TODO remove
         PostResponse responses = new PostResponse();
 
         try
         {
-            responses =  JsonUtility.FromJson<PostResponse>(response);
-            Debug.Log("Parsed response: " + responses); // TODO remove
+            responses =  JsonUtility.FromJson<PostResponse>(responseMsg);
         }
         catch (Exception ex)
         {
-            Debug.LogError("Failed to serialize message: '" + response +  "' with error: '" + ex.Message + "'");
+            Debug.LogError("Failed to serialize message: '" + responseMsg +  "' with error: '" + ex.Message + "'");
             return;
         }
 
@@ -105,14 +107,20 @@ public class TimeHandler : MonoBehaviour
             return;
         }
 
+        if (responses.nearby_players.Length <= 0)
+        {
+            Debug.Log("No player close by");
+            return;
+        }
+
         // Decide on response according to answer from server
         if (responses.nearby_players[0].dist > maxDistanceFromHome)
         {
-            this.playerBehavior.SubtractPoints(10);
+            this.playerBehavior.SubtractPoints(scoreSteps);
         }
         else
         {
-            PlayerBehavior.Instance.AddPoints(10);
+            this.playerBehavior.AddPoints(scoreSteps);
         }
     }
 }

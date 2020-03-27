@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-#if PLATFORM_ANDROID
-using UnityEngine.Android;
+#if UNITY_ANDROID
+    using UnityEngine.Android;
 #endif
-using UnityEngine.iOS;
-
+#if UNITY_IOS
+    using UnityEngine.iOS;
+#endif
 public class GPS_Tracking : MonoBehaviour
 {
-    float latitude, longitude;
+    private float latitude;
+    private float longitude;
 
     private void Start()
     {
         StartCoroutine(CheckForGPSAccess());
     }
 
-
     IEnumerator CheckForGPSAccess()
     {
-#if PLATFORM_ANDROID
+#if UNITY_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
             Debug.Log("GPS is needed. Please allow Location access");
@@ -38,9 +39,9 @@ public class GPS_Tracking : MonoBehaviour
         {
             StartCoroutine(InitializeGPS());
         }
+#elif UNITY_IOS
+        StartCoroutine(InitializeGPS());
 #else
-            StartCoroutine(InitializeGPS());
-        
         Debug.LogWarning("GPS not implemented.");
 #endif
         yield return null;

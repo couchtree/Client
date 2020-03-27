@@ -27,7 +27,7 @@ namespace Managers
     [System.Serializable]
     public struct PostResponseElement
     {
-        public int dir; // -> enum [0:"n",1:"ne",2:"e",3:"se",4:"s",5:"sw",6:"w",7:"nw"]
+        public int dir; // -> enum [0:"n", 1:"ne", 2:"e", 3:"se", 4:"s", 5:"sw", 6:"w", 7:"nw"]
         public float dist; // [m]
         public float vel_nearing; // clarify on type
     }
@@ -64,7 +64,6 @@ namespace Managers
 
         IEnumerator PostRequest(string url, string json, ServerResponse response)
         {
-            Debug.Log("Sending to url: '" + url + "'\nMessage: '" + json + "'"); // TODO remove
             var uwr = new UnityWebRequest(url, "POST");
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
             uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
