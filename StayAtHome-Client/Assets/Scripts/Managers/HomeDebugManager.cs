@@ -6,9 +6,13 @@ using Core.Map;
 
 namespace Managers
 {
+    /// <summary>
+    /// DebugManager for the HomeScreen
+    /// 
+    /// Is displays the home- and current position as well as the current score in the corresponding text-fields
+    /// </summary>
     public class HomeDebugManager : MonoBehaviour
     {
-        public bool enableDebugging = false;
         public TextMeshProUGUI homeLat;
         public TextMeshProUGUI homeLon;
         public TextMeshProUGUI currentLat;
@@ -20,23 +24,15 @@ namespace Managers
 
         private void Start()
         {
-            if (!enableDebugging)
-            {
-                var thisGameObject = GetComponent<GameObject>();
-                thisGameObject.SetActive(false);
-            }
         }
 
         void Update()
         {
-            if (enableDebugging)
-            {
-                homeLat.text = player.Lat.ToString();
-                homeLon.text = player.Lon.ToString();
-                currentLat.text = gps.GetLatitude().ToString();
-                currentLon.text = gps.GetLongitude().ToString();
-                score.text = player.Score.ToString();
-            }
+            homeLat.text = player.Lat.ToString();
+            homeLon.text = player.Lon.ToString();
+            currentLat.text = gps.GetLatitude().ToString();
+            currentLon.text = gps.GetLongitude().ToString();
+            score.text = player.Score.ToString();
         }
     }
 }

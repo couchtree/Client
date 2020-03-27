@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace Managers
 {
+    /// <summary>
+    /// Manager class to setup a new player
+    /// </summary>
     public class SetupManager : MonoBehaviour
     {
         [Header("Debugging stuff")] 
@@ -31,7 +34,7 @@ namespace Managers
         public GameObject treePanel;
         public GameObject homebasePanel;
 
-        private PlayerData player;
+        private PlayerData player;  // setup data of the player
 
         private void Awake()
         {
@@ -80,11 +83,16 @@ namespace Managers
             gpsDeactivatedInfo.SetActive(true);
         }
 
+        /// <summary>
+        /// Tries to save the player name.
+        /// If playerName was entered by the user - i.e. name field is not empty - the name is saved and the screen moves on to the next input field.
+        /// Otherwise an error is displayed.
+        /// </summary>
         public void SavePlayerName()
         {
             if (this.playerName.text.Equals(""))
             {
-                this.ShowError("Du musst einen Spielernamen auswählen!");
+                this.showError("Du musst einen Spielernamen auswählen!");
                 Debug.LogError("No playername given");
                 return;
             }
@@ -97,12 +105,17 @@ namespace Managers
             this.gardenPanel.SetActive(true);
         }
 
+        /// <summary>
+        /// Tries to save the garden name.
+        /// If gardenname was entered by the user - i.e. name field is not emtpy - the name is saved and the screen moves on to the next input field.
+        /// Otherwise an error is displayed
+        /// </summary>
         public void SaveGardenName()
         {
             GardenData garden = new GardenData();
             if (this.gardenName.text.Equals(""))
             {
-                this.ShowError("Du musst einen Namen für den Garten auswählen!");
+                this.showError("Du musst einen Namen für den Garten auswählen!");
                 Debug.LogError("No gardenname given");
                 return;
             }
@@ -115,12 +128,17 @@ namespace Managers
             this.treePanel.SetActive(true);
         }
 
+        /// <summary>
+        /// Tries to save the tree name.
+        /// If tree name was entered by the user - i.e. name field is not emtpy - the name is saved and the screen moves on to the next input field.
+        /// Otherwise an error is displayed
+        /// </summary>
         public void SaveTreeName()
         {
             PlantData tree = new PlantData();
             if (this.treeName.text.Equals(""))
             {
-                this.ShowError("Du musst einen Namen für den ersten Setzling auswählen!");
+                this.showError("Du musst einen Namen für den ersten Setzling auswählen!");
                 Debug.LogError("No treenname given");
                 return;
             }
@@ -140,6 +158,9 @@ namespace Managers
             sceneLoading.LoadScene(3);
         }
 
+        /// <summary>
+        /// Skipps the setting of a home base.
+        /// </summary>
         public void proceedFromLocationPanel()
         {
             this.hideError();
@@ -147,11 +168,16 @@ namespace Managers
             SetupCompleted();
         }
 
+        /// <summary>
+        /// Tries to save the home location.
+        /// First checks if the user is connected to a WLAN. If not an error is displayed.
+        /// If WLAN connection is confirmed the current GPS location is stored as the home location
+        /// </summary>
         public void SaveHomeLocation()
         {
             if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
             {
-                this.ShowError("Du bist mit keinem WLAN verbunden. Bist du wirklich zuhause du Lümmel?");
+                this.showError("Du bist mit keinem WLAN verbunden. Bist du wirklich zuhause du Lümmel?");
                 return;
             }
             
@@ -172,7 +198,7 @@ namespace Managers
             this.errorPanel.SetActive(false);
         }
 
-        private void ShowError(string errorText)
+        private void showError(string errorText)
         {
             this.errorText.text = errorText;
             this.errorPanel.SetActive(true);

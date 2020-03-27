@@ -5,6 +5,12 @@ using Core.DesignPattern;
 
 namespace Core.Map
 {
+    /// <summary>
+    /// Singleton to manage all the player actions and behaviours
+    ///
+    /// Stores its data in the PlayerData-struct.
+    /// The public variables implement an auto-save
+    /// </summary>
     public class Player : Singleton<Player>
     {
         [HideInInspector]
@@ -55,6 +61,11 @@ namespace Core.Map
             this.LoadPlayer();
         }
 
+        /// <summary>
+        /// Change the score of the player by the given amount.
+        /// Note: The score has a lower bound of zero.
+        /// </summary>
+        /// <param name="amount"></param>
         public void ChangeScore(int amount)
         {
             // Ensure that the player score can not fall below zero
@@ -68,6 +79,12 @@ namespace Core.Map
             }
         }
 
+        /// <summary>
+        /// Check if the player is currently at this home base location
+        /// </summary>
+        /// <param name="lat">current lateral coordinate</param>
+        /// <param name="lon">current longitudal coordinate</param>
+        /// <returns>True if the player is at his home location, false otherwise</returns>
         public bool AtHomeBase(float lat, float lon)
         {
             Vector2 homePos = new Vector2(this.Lat, this.Lon);

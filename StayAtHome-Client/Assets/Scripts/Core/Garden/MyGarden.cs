@@ -9,6 +9,11 @@ using TMPro;
 
 namespace Core.Garden
 {
+    /// <summary>
+    /// Class to manage the garden of a player.
+    /// 
+    /// The garden consists of all plant but the main/tree plant
+    /// </summary>
     public class MyGarden : MonoBehaviour
     {
         public List<APlant> plants;

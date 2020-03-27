@@ -9,6 +9,12 @@ using TMPro;
 #if UNITY_IOS
     using UnityEngine.iOS;
 #endif
+
+/// <summary>
+/// Class to handle the GPS connection on the device.
+/// 
+/// It retrieves the current GPS position regulary and provides it the other class as required.
+/// </summary>
 public class GPS_Tracking : MonoBehaviour
 {
     private float latitude;
@@ -97,6 +103,10 @@ public class GPS_Tracking : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Getter to know if GPS is enabled
+    /// </summary>
+    /// <returns>True if GPS is enabled, false otherwise</returns>
     public static bool isGpsEnabled()
     {
         return Input.location.isEnabledByUser;

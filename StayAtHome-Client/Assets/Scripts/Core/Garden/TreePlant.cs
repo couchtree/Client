@@ -5,6 +5,11 @@ using TMPro;
 
 namespace Core.Garden
 {
+    /// <summary>
+    /// The TreePlant is the main plant of this game.
+    /// 
+    /// It does not grow in the garden but on the homescreen itsself.
+    /// </summary>
     public class TreePlant : APlant
     {        
         public TextMeshProUGUI treeNameText;
@@ -23,12 +28,18 @@ namespace Core.Garden
             return 30;
         }
         
+        /// <summary>
+        /// Loads this tree plant
+        /// </summary>
         public override void Load()
         {
             SavegameManager.LoadTree(out this.data);
             this.treeNameText.text = data.name;
         }
 
+        /// <summary>
+        /// Stores this tree plant
+        /// </summary>
         public override void Save()
         {
             SavegameManager.SaveTree(this.data);

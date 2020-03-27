@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class to toggle the sprite of a button
+/// </summary>
 public class ToggleButton : MonoBehaviour
 {
     public Sprite onSprite;     // Sprite displayed when button is in 'on' state
@@ -17,6 +20,9 @@ public class ToggleButton : MonoBehaviour
         toggleImage();
     }
 
+    /// <summary>
+    /// Toggles the active sprite of the provided image
+    /// </summary>
     public void toggleImage()
     {
         toggle = !toggle;

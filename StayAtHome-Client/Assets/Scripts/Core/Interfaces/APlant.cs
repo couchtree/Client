@@ -4,6 +4,12 @@ using DataContainer;
 
 namespace Core.Interfaces
 {
+    /// <summary>
+    /// An abstract class for all plants in this game.
+    /// 
+    /// Stores its data in the PlantData-struct.
+    /// The public variables implement an auto-save
+    /// </summary>
     public abstract class APlant : MonoBehaviour
     {
         public int EvolutionLevel
@@ -15,6 +21,7 @@ namespace Core.Interfaces
                 Save();
             }
         }
+
         public string Name
         {
             get {return data.name;}
