@@ -110,6 +110,7 @@ public class TimeHandler : MonoBehaviour
         if (responses.nearby_players.Length <= 0)
         {
             Debug.Log("No player close by");
+            this.playerBehavior.AddPoints(scoreSteps);
             return;
         }
 
