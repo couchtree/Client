@@ -925,12 +925,12 @@ GameObject:
   - component: {fileID: 108899953}
   - component: {fileID: 108899952}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: TreeStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &108899951
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1252,8 +1252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plants: []
-  tree: {fileID: 0}
-  treeNameField: {fileID: 1766442526}
 --- !u!4 &124755003
 Transform:
   m_ObjectHideFlags: 0
@@ -1262,11 +1260,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124755001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 936.0884, y: 820.65894, z: -1909}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &169716819
 GameObject:
@@ -1458,6 +1456,64 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &175732410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175732411}
+  - component: {fileID: 175732412}
+  m_Layer: 5
+  m_Name: SeedlingState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &175732411
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175732410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2099497029}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &175732412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175732410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148407fef2a1f4a4b8a09e26be5e1a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  happyMode: {fileID: 21300000, guid: 92b2bdccacfd540419e4404f7f43ddb1, type: 3}
+  happyBackground: {fileID: 21300000, guid: 7f53acd074856fd4694656e151eda9ef, type: 3}
+  neutralMode: {fileID: 21300000, guid: c51f5c35281150c4ba485eb684ba1798, type: 3}
+  neutralBackground: {fileID: 21300000, guid: f631b26e6bbfa234189b2af6baa6ad88, type: 3}
+  sadMode: {fileID: 21300000, guid: eee98e58d95c7064bbde97a96bd05bff, type: 3}
+  sadBackground: {fileID: 21300000, guid: dddfef85cb8339c4eb7f5a1beb679098, type: 3}
+  seedlingBackground: {fileID: 2099497030}
+  seedlingSmiley: {fileID: 1607538709}
+  happyModeThreshold: 1000
+  sadModeThreshold: 100
 --- !u!1 &190902751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,7 +2639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &315529615
 GameObject:
@@ -3227,7 +3283,7 @@ GameObject:
   - component: {fileID: 406796316}
   - component: {fileID: 406796315}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: InventoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3468,7 +3524,7 @@ RectTransform:
   - {fileID: 1356061988}
   - {fileID: 1785899308}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3802,7 +3858,7 @@ GameObject:
   - component: {fileID: 427941733}
   - component: {fileID: 427941732}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GardenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4809,7 +4865,7 @@ GameObject:
   - component: {fileID: 614050947}
   - component: {fileID: 614050946}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: ChallengesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5110,7 +5166,7 @@ GameObject:
   - component: {fileID: 685196318}
   - component: {fileID: 685196317}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: CommunityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6992,6 +7048,50 @@ MonoBehaviour:
   offSprite: {fileID: 21300000, guid: 86289135be5d6cf4091caab3c7bc1496, type: 3}
   image: {fileID: 1087802094}
   defaultState: 1
+--- !u!1 &1103470377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103470378}
+  - component: {fileID: 1103470379}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103470378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103470377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103470379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103470377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c766de40ac753294abbd56b1bd8b7f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
 --- !u!1 &1110243050
 GameObject:
   m_ObjectHideFlags: 0
@@ -9613,7 +9713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531322625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1733.4993, y: 1031.5894, z: -4489.8496}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10279,7 +10379,7 @@ GameObject:
   - component: {fileID: 1607538710}
   - component: {fileID: 1607538709}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TreeSmiley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11285,6 +11385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f800df18a5b15cc44901aec3e93f80e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  garden: {fileID: 124755002}
   overlay: {fileID: 108899950}
   credits: {fileID: 7196763438489075830}
   settings: {fileID: 471503471}
@@ -11301,6 +11402,51 @@ MonoBehaviour:
   dungMaxValue: {fileID: 385388214}
   diseaseCurValue: {fileID: 350480522}
   diseaseMaxValue: {fileID: 573889767}
+--- !u!1 &1786729411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786729413}
+  - component: {fileID: 1786729412}
+  m_Layer: 0
+  m_Name: Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1786729412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786729411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f8ab4bef3c417881fda88087b8a932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EvolutionLevel: 0
+  treeNameText: {fileID: 1766442526}
+--- !u!4 &1786729413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786729411}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1248.7152, y: 827.0402, z: -1116.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1795413345
 GameObject:
   m_ObjectHideFlags: 0
@@ -12807,7 +12953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a299e2c2ea7baeb4897fc9802eafad30, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96c82e4f6b4c2a140a803fe7eb57bbd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12945,9 +13091,8 @@ GameObject:
   - component: {fileID: 2099497031}
   - component: {fileID: 2099497030}
   - component: {fileID: 2099497032}
-  - component: {fileID: 2099497033}
   m_Layer: 5
-  m_Name: PlantInformationIcon
+  m_Name: TreeInformationIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12966,6 +13111,7 @@ RectTransform:
   m_Children:
   - {fileID: 1607538708}
   - {fileID: 1766442525}
+  - {fileID: 175732411}
   m_Father: {fileID: 1275039274}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13064,28 +13210,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2099497033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099497028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148407fef2a1f4a4b8a09e26be5e1a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  happyMode: {fileID: 21300000, guid: 92b2bdccacfd540419e4404f7f43ddb1, type: 3}
-  happyBackground: {fileID: 21300000, guid: 7f53acd074856fd4694656e151eda9ef, type: 3}
-  neutralMode: {fileID: 21300000, guid: c51f5c35281150c4ba485eb684ba1798, type: 3}
-  neutralBackground: {fileID: 21300000, guid: f631b26e6bbfa234189b2af6baa6ad88, type: 3}
-  sadMode: {fileID: 21300000, guid: eee98e58d95c7064bbde97a96bd05bff, type: 3}
-  sadBackground: {fileID: 21300000, guid: dddfef85cb8339c4eb7f5a1beb679098, type: 3}
-  seedlingBackground: {fileID: 2099497030}
-  seedlingSmiley: {fileID: 1607538709}
-  happyModeThreshold: 1000
-  sadModeThreshold: 100
 --- !u!1 &2107517335
 GameObject:
   m_ObjectHideFlags: 0

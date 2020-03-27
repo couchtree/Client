@@ -31,12 +31,12 @@ public class SeedlingStateView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.score < sadModeThreshold)
+        if (player.Score < sadModeThreshold)
         {
             seedlingSmiley.sprite = sadMode;
             seedlingBackground.sprite = sadBackground;
         }
-        else if (player.score > happyModeThreshold)
+        else if (player.Score > happyModeThreshold)
         {
             seedlingSmiley.sprite = happyMode;
             seedlingBackground.sprite = happyBackground;

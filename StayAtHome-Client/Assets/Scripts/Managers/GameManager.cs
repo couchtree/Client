@@ -5,14 +5,11 @@ using Core.DesignPattern;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
-using Core.Garden;
 
 namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
-        public MyGarden Garden { get; private set; }
-
         [HideInInspector]
         public string deviceID;
 
@@ -20,8 +17,6 @@ namespace Managers
         private protected override void Awake()
         {
             base.Awake();
-
-            this.Garden = MyGarden.Instance;
         }
 
         private void Start()

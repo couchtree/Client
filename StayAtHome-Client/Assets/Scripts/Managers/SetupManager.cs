@@ -1,5 +1,6 @@
 ﻿using Core.Garden;
 using Core.Map;
+using DataContainer;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -10,8 +11,6 @@ namespace Managers
     {
         [Header("Debugging stuff")] 
         public bool activateDebugging;
-        public TextMeshProUGUI debuggingWifi;
-        public TextMeshProUGUI debuggingGps;
 
         [Header("Name Input Fields")]
         public TMP_InputField playerName;
@@ -27,41 +26,43 @@ namespace Managers
         public TextMeshProUGUI errorText;
 
         [Header("Switchable Panels")]
-        public GameObject panel1;
-        public GameObject panel2;
-        public GameObject panel3;
-        public GameObject panel4;
+        public GameObject namePanel;
+        public GameObject gardenPanel;
+        public GameObject treePanel;
+        public GameObject homebasePanel;
+
+        private PlayerData player;
 
         private void Awake()
         {
+            player = new PlayerData();
+
             this.errorPanel.SetActive(false);
             if (activateDebugging)
             {
                 PlayerPrefs.DeleteAll();
-                this.debuggingGps.gameObject.SetActive(true);
-                this.debuggingWifi.gameObject.SetActive(true);
             }
             if (!PlayerPrefs.HasKey("player.name") || PlayerPrefs.GetString("player.name") == "")
             {
-                panel1.SetActive(true);
-                panel2.SetActive(false);
-                panel3.SetActive(false);
-                panel4.SetActive(false);
+                namePanel.SetActive(true);
+                gardenPanel.SetActive(false);
+                treePanel.SetActive(false);
+                homebasePanel.SetActive(false);
                 return;
             }
             else if (!PlayerPrefs.HasKey("garden.name") || PlayerPrefs.GetString("garden.name") == "")
             {
-                panel1.SetActive(false);
-                panel2.SetActive(true);
-                panel3.SetActive(false);
-                panel4.SetActive(false);
+                namePanel.SetActive(false);
+                gardenPanel.SetActive(true);
+                treePanel.SetActive(false);
+                homebasePanel.SetActive(false);
                 return;
             }
 
-            panel1.SetActive(false);
-            panel2.SetActive(false);
-            panel3.SetActive(false);
-            panel4.SetActive(false);
+            namePanel.SetActive(false);
+            gardenPanel.SetActive(false);
+            treePanel.SetActive(false);
+            homebasePanel.SetActive(false);
             this.SetupCompleted();
         }
 
@@ -81,7 +82,6 @@ namespace Managers
 
         public void SavePlayerName()
         {
-            var player = GetComponent<Player>();
             if (this.playerName.text.Equals(""))
             {
                 this.ShowError("Du musst einen Spielernamen auswählen!");
@@ -91,15 +91,15 @@ namespace Managers
 
             this.hideError();
 
-            player.Name = this.playerName.text;
+            player.name = this.playerName.text;
             SavegameManager.SavePlayer(player);
-            this.panel1.SetActive(false);
-            this.panel2.SetActive(true);
+            this.namePanel.SetActive(false);
+            this.gardenPanel.SetActive(true);
         }
 
         public void SaveGardenName()
         {
-            MyGarden garden = GetComponent<MyGarden>();
+            GardenData garden = new GardenData();
             if (this.gardenName.text.Equals(""))
             {
                 this.ShowError("Du musst einen Namen für den Garten auswählen!");
@@ -109,15 +109,15 @@ namespace Managers
 
             this.hideError();
 
-            garden.Name = this.gardenName.text;
+            garden.name = this.gardenName.text;
             SavegameManager.SaveGarden(garden);
-            this.panel2.SetActive(false);
-            this.panel3.SetActive(true);
+            this.gardenPanel.SetActive(false);
+            this.treePanel.SetActive(true);
         }
 
         public void SaveTreeName()
         {
-            MyGarden garden = GetComponent<MyGarden>();
+            TreeData tree = new TreeData();
             if (this.treeName.text.Equals(""))
             {
                 this.ShowError("Du musst einen Namen für den ersten Setzling auswählen!");
@@ -127,17 +127,11 @@ namespace Managers
 
             this.hideError();
 
-            garden.tree.GetComponent<TreePlant>().Name = this.treeName.text;
-            SavegameManager.SaveTree(garden.tree.GetComponent<TreePlant>());
-            this.panel3.SetActive(false);
-            this.panel4.SetActive(true);
-        }
-
-        public void SaveHomeLocation()
-        {
-            this.hideError();
-            this.panel4.SetActive(false);
-            SetupCompleted();
+            tree.name = this.treeName.text;
+            tree.evolutionLevel = 0;
+            SavegameManager.SaveTree(tree);
+            this.treePanel.SetActive(false);
+            this.homebasePanel.SetActive(true);
         }
 
         private void SetupCompleted()
@@ -146,7 +140,14 @@ namespace Managers
             sceneLoading.LoadScene(3);
         }
 
-        public void setHomeGPSPosition()
+        public void proceedFromLocationPanel()
+        {
+            this.hideError();
+            this.homebasePanel.SetActive(false);
+            SetupCompleted();
+        }
+
+        public void SaveHomeLocation()
         {
             if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
             {
@@ -155,14 +156,15 @@ namespace Managers
             }
             
             var gps = gameObject.GetComponent<GPS_Tracking>();
-            var player = gameObject.GetComponent<Player>();
             Debug.Log("gps setzen");
             Debug.Log(gps.GetLatitude());
             Debug.Log(gps.GetLongitude());
             
             player.lat = gps.GetLatitude();
             player.lon = gps.GetLongitude();
-            SaveHomeLocation();
+            SavegameManager.SavePlayer(player);
+
+            proceedFromLocationPanel();
         }
 
         private void hideError()

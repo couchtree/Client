@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Managers;
+using Core.Garden;
 
 public class UIHomeScreen : MonoBehaviour
 {
+    [SerializeField]
+    private MyGarden garden;
 
     public GameObject overlay;
     public GameObject credits;
@@ -32,7 +35,6 @@ public class UIHomeScreen : MonoBehaviour
 
     public void OpenSettings()
     {
-        // TODO
         this.settings.SetActive(true);
         this.homeScreen.SetActive(false);
     }
@@ -97,20 +99,20 @@ public class UIHomeScreen : MonoBehaviour
         this.settings.SetActive(false);
         this.credits.SetActive(false);
 
-        this.healthCurValue.text = GameManager.Instance.Garden.Health.ToString();
-        this.healthMaxValue.text = GameManager.Instance.Garden.MaxHealth.ToString();
+        this.healthCurValue.text = garden.Health.ToString();
+        this.healthMaxValue.text = garden.MaxHealth.ToString();
 
-        this.waterCurValue.text = GameManager.Instance.Garden.Water.ToString();
-        this.waterMaxValue.text = GameManager.Instance.Garden.MaxWater.ToString();
+        this.waterCurValue.text = garden.Water.ToString();
+        this.waterMaxValue.text = garden.MaxWater.ToString();
 
-        this.rankCurValue.text = GameManager.Instance.Garden.Rank.ToString();
-        this.rankMaxValue.text = GameManager.Instance.Garden.MaxRank.ToString();
+        this.rankCurValue.text = garden.Rank.ToString();
+        this.rankMaxValue.text = garden.MaxRank.ToString();
 
-        this.dungCurValue.text = GameManager.Instance.Garden.Dung.ToString();
-        this.dungMaxValue.text = GameManager.Instance.Garden.MaxDung.ToString();
+        this.dungCurValue.text = garden.Dung.ToString();
+        this.dungMaxValue.text = garden.MaxDung.ToString();
 
-        this.diseaseCurValue.text = GameManager.Instance.Garden.Disease.ToString();
-        this.diseaseMaxValue.text = GameManager.Instance.Garden.MaxDisease.ToString();
+        this.diseaseCurValue.text = garden.Disease.ToString();
+        this.diseaseMaxValue.text = garden.MaxDisease.ToString();
     }
 
     void Update()
