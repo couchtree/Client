@@ -4,47 +4,63 @@ using UnityEngine;
 using UnityEngine.UI;
 using Core.Map;
 
-public class SeedlingStateView : MonoBehaviour
+namespace UI
 {
-    public Sprite happyMode;
-    public Sprite happyBackground;
-    public Sprite neutralMode;
-    public Sprite neutralBackground;
-    public Sprite sadMode;
-    public Sprite sadBackground;
-
-    public Image seedlingBackground;
-    public Image seedlingSmiley;
-
-
-    private Player player;
-
-    public int happyModeThreshold; // score above this value is treated as happy mode
-    public int sadModeThreshold; // score below this value is treated as sad mode
-
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Class to change the seedling state when the score of the player changes
+    /// </summary>
+    public class SeedlingStateView : MonoBehaviour
     {
-        player = Player.Instance;
-    }
+        public Sprite happyMode;
+        public Sprite happyBackground;
+        public Sprite neutralMode;
+        public Sprite neutralBackground;
+        public Sprite sadMode;
+        public Sprite sadBackground;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (player.score < sadModeThreshold)
+        public Image seedlingBackground;
+        public Image seedlingSmiley;
+
+
+        private Player player;
+
+        public int happyModeThreshold; // score above this value is treated as happy mode
+        public int sadModeThreshold; // score below this value is treated as sad mode
+
+        // Start is called before the first frame update
+        void Start()
         {
-            seedlingSmiley.sprite = sadMode;
-            seedlingBackground.sprite = sadBackground;
+            player = Player.Instance;
+            if (happyModeThreshold < sadModeThreshold)
+            {
+                // Enforce that sadModeThreshold < happyModeThreshold
+                Debug.LogWarning("Thresholds were enforced to be in correct order.");
+                int temp = happyModeThreshold;
+                happyModeThreshold = sadModeThreshold;
+                sadModeThreshold = temp;
+            }
         }
-        else if (player.score > happyModeThreshold)
+
+        /// <summary>
+        /// On every iteration the player's score is checked and the color and the smiley of the tree information panel are adapted accordingly
+        /// </summary>
+        void Update()
         {
-            seedlingSmiley.sprite = happyMode;
-            seedlingBackground.sprite = happyBackground;
-        }
-        else
-        {
-            seedlingSmiley.sprite = neutralMode;
-            seedlingBackground.sprite = neutralBackground;
+            if (player.Score < sadModeThreshold)
+            {
+                seedlingSmiley.sprite = sadMode;
+                seedlingBackground.sprite = sadBackground;
+            }
+            else if (player.Score > happyModeThreshold)
+            {
+                seedlingSmiley.sprite = happyMode;
+                seedlingBackground.sprite = happyBackground;
+            }
+            else
+            {
+                seedlingSmiley.sprite = neutralMode;
+                seedlingBackground.sprite = neutralBackground;
+            }
         }
     }
 }

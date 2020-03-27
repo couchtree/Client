@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace UI
 {
+    /// <summary>
+    /// Class to load the next scene asynchronous
+    /// </summary>
     public class SceneLoading : MonoBehaviour
     {
         //[SerializeField] private Image _progressBar;
@@ -20,11 +23,20 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Load scene with set index directly
+        /// </summary>
+        /// <param name="scene">Index of the scene to be loaded</param>
         public void LoadScene(int scene)
         {
             StartCoroutine(LoadAsyncOperation(scene));
         }
 
+        /// <summary>
+        /// Load scene after some time
+        /// </summary>
+        /// <param name="scene">Index of the scene to be loaded</param>
+        /// <param name="seconds">Time to wait before load is performed [s]</param>
         public void LoadScene(int scene, float seconds)
         {
             StartCoroutine(WaitWithSceneLoading(scene, seconds));

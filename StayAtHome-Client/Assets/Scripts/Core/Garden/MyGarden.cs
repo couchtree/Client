@@ -2,19 +2,23 @@ using System.Collections.Generic;
 using Core.DesignPattern;
 using Core.Interfaces;
 using UnityEngine;
+using DataContainer;
+using Managers;
 using TMPro;
+
 
 namespace Core.Garden
 {
-    public class MyGarden : Singleton<MyGarden>
+    /// <summary>
+    /// Class to manage the garden of a player.
+    /// 
+    /// The garden consists of all plant but the main/tree plant
+    /// </summary>
+    public class MyGarden : MonoBehaviour
     {
         public List<APlant> plants;
-        
-        public GameObject tree;
 
-        public TextMeshProUGUI treeNameField;
-
-        public string Name { get; set; }
+        public GardenData gardenData;
 
         // Move these to wherever you see fit..
         public int Health { get; private set; } = 100;
@@ -33,35 +37,10 @@ namespace Core.Garden
         public int MaxDisease { get; private set; } = 10;
 
 
-        private protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             this.plants = new List<APlant>();
-            this.tree = new GameObject("tree");
-            this.tree.transform.parent = this.transform;
-            this.tree.AddComponent<TreePlant>();
-            LoadGarden();
-        }
-
-        protected void LoadGarden()
-        {
-            if (PlayerPrefs.HasKey("garden.name"))
-            {
-                this.Name = PlayerPrefs.GetString("garden.name");
-            }
-
-            if (PlayerPrefs.HasKey("tree.name") && PlayerPrefs.HasKey("tree.evolution"))
-            {
-                TreePlant treePlant = this.tree.GetComponent<TreePlant>();
-                treePlant.Name = PlayerPrefs.GetString("tree.name");
-                treePlant.EvolutionLevel = PlayerPrefs.GetInt("tree.evolution");
-                this.treeNameField.text = PlayerPrefs.GetString("tree.name");
-            }
-        }
-
-        public MyGarden()
-        {
+            SavegameManager.LoadGarden(out this.gardenData);
         }
     }
 }

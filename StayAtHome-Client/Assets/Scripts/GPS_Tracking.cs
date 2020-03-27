@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-#if PLATFORM_ANDROID
-using UnityEngine.Android;
+#if UNITY_ANDROID
+    using UnityEngine.Android;
 #endif
-using UnityEngine.iOS;
+#if UNITY_IOS
+    using UnityEngine.iOS;
+#endif
 
+/// <summary>
+/// Class to handle the GPS connection on the device.
+/// 
+/// It retrieves the current GPS position regulary and provides it the other class as required.
+/// </summary>
 public class GPS_Tracking : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI info; //Remove
-
-    float latitude, longitude;
+    private float latitude;
+    private float longitude;
 
     private void Start()
     {
         StartCoroutine(CheckForGPSAccess());
     }
 
-
     IEnumerator CheckForGPSAccess()
     {
-#if PLATFORM_ANDROID
+#if UNITY_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
             Debug.Log("GPS is needed. Please allow Location access");
@@ -40,9 +45,9 @@ public class GPS_Tracking : MonoBehaviour
         {
             StartCoroutine(InitializeGPS());
         }
+#elif UNITY_IOS
+        StartCoroutine(InitializeGPS());
 #else
-            StartCoroutine(InitializeGPS());
-        
         Debug.LogWarning("GPS not implemented.");
 #endif
         yield return null;
@@ -54,12 +59,11 @@ public class GPS_Tracking : MonoBehaviour
         // Start service before querying location
         Input.location.Start();
 
-
         // First, check if user has location service enabled
         if (!isGpsEnabled())
         {
-            info.SetText("GPS is required");
-            yield return 1;
+            Debug.LogWarning("GPS required");
+            yield return new WaitForSeconds(5); // used to slow down request
             StartCoroutine(InitializeGPS());
             yield break;
         }
@@ -93,14 +97,16 @@ public class GPS_Tracking : MonoBehaviour
             // Access granted and location value could be retrieved
             SetLatAndLong();
             Debug.Log("Latitude: " + GetLatitude().ToString() + "\n Longitude: " + GetLongitude().ToString());
-            info.SetText("Latitude: " + GetLatitude().ToString() + "\n Longitude: " +
-                         GetLongitude().ToString()); //Remove
 
             // Stop service if there is no need to query location updates continuously
             Input.location.Stop();
         }
     }
 
+    /// <summary>
+    /// Getter to know if GPS is enabled
+    /// </summary>
+    /// <returns>True if GPS is enabled, false otherwise</returns>
     public static bool isGpsEnabled()
     {
         return Input.location.isEnabledByUser;

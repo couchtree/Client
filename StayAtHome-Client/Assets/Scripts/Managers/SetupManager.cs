@@ -1,17 +1,19 @@
 ﻿using Core.Garden;
 using Core.Map;
+using DataContainer;
 using TMPro;
 using UI;
 using UnityEngine;
 
 namespace Managers
 {
+    /// <summary>
+    /// Manager class to setup a new player
+    /// </summary>
     public class SetupManager : MonoBehaviour
     {
         [Header("Debugging stuff")] 
         public bool activateDebugging;
-        public TextMeshProUGUI debuggingWifi;
-        public TextMeshProUGUI debuggingGps;
 
         [Header("Name Input Fields")]
         public TMP_InputField playerName;
@@ -27,41 +29,43 @@ namespace Managers
         public TextMeshProUGUI errorText;
 
         [Header("Switchable Panels")]
-        public GameObject panel1;
-        public GameObject panel2;
-        public GameObject panel3;
-        public GameObject panel4;
+        public GameObject namePanel;
+        public GameObject gardenPanel;
+        public GameObject treePanel;
+        public GameObject homebasePanel;
+
+        private PlayerData player;  // setup data of the player
 
         private void Awake()
         {
+            player = new PlayerData();
+
             this.errorPanel.SetActive(false);
             if (activateDebugging)
             {
                 PlayerPrefs.DeleteAll();
-                this.debuggingGps.gameObject.SetActive(true);
-                this.debuggingWifi.gameObject.SetActive(true);
             }
             if (!PlayerPrefs.HasKey("player.name") || PlayerPrefs.GetString("player.name") == "")
             {
-                panel1.SetActive(true);
-                panel2.SetActive(false);
-                panel3.SetActive(false);
-                panel4.SetActive(false);
+                namePanel.SetActive(true);
+                gardenPanel.SetActive(false);
+                treePanel.SetActive(false);
+                homebasePanel.SetActive(false);
                 return;
             }
             else if (!PlayerPrefs.HasKey("garden.name") || PlayerPrefs.GetString("garden.name") == "")
             {
-                panel1.SetActive(false);
-                panel2.SetActive(true);
-                panel3.SetActive(false);
-                panel4.SetActive(false);
+                namePanel.SetActive(false);
+                gardenPanel.SetActive(true);
+                treePanel.SetActive(false);
+                homebasePanel.SetActive(false);
                 return;
             }
 
-            panel1.SetActive(false);
-            panel2.SetActive(false);
-            panel3.SetActive(false);
-            panel4.SetActive(false);
+            namePanel.SetActive(false);
+            gardenPanel.SetActive(false);
+            treePanel.SetActive(false);
+            homebasePanel.SetActive(false);
             this.SetupCompleted();
         }
 
@@ -79,65 +83,73 @@ namespace Managers
             gpsDeactivatedInfo.SetActive(true);
         }
 
+        /// <summary>
+        /// Tries to save the player name.
+        /// If playerName was entered by the user - i.e. name field is not empty - the name is saved and the screen moves on to the next input field.
+        /// Otherwise an error is displayed.
+        /// </summary>
         public void SavePlayerName()
         {
-            var player = GetComponent<Player>();
             if (this.playerName.text.Equals(""))
             {
-                this.ShowError("Du musst einen Spielernamen auswählen!");
+                this.showError("Du musst einen Spielernamen auswählen!");
                 Debug.LogError("No playername given");
                 return;
             }
 
             this.hideError();
 
-            player.Name = this.playerName.text;
+            player.name = this.playerName.text;
             SavegameManager.SavePlayer(player);
-            this.panel1.SetActive(false);
-            this.panel2.SetActive(true);
+            this.namePanel.SetActive(false);
+            this.gardenPanel.SetActive(true);
         }
 
+        /// <summary>
+        /// Tries to save the garden name.
+        /// If gardenname was entered by the user - i.e. name field is not emtpy - the name is saved and the screen moves on to the next input field.
+        /// Otherwise an error is displayed
+        /// </summary>
         public void SaveGardenName()
         {
-            MyGarden garden = GetComponent<MyGarden>();
+            GardenData garden = new GardenData();
             if (this.gardenName.text.Equals(""))
             {
-                this.ShowError("Du musst einen Namen für den Garten auswählen!");
+                this.showError("Du musst einen Namen für den Garten auswählen!");
                 Debug.LogError("No gardenname given");
                 return;
             }
 
             this.hideError();
 
-            garden.Name = this.gardenName.text;
+            garden.name = this.gardenName.text;
             SavegameManager.SaveGarden(garden);
-            this.panel2.SetActive(false);
-            this.panel3.SetActive(true);
+            this.gardenPanel.SetActive(false);
+            this.treePanel.SetActive(true);
         }
 
+        /// <summary>
+        /// Tries to save the tree name.
+        /// If tree name was entered by the user - i.e. name field is not emtpy - the name is saved and the screen moves on to the next input field.
+        /// Otherwise an error is displayed
+        /// </summary>
         public void SaveTreeName()
         {
-            MyGarden garden = GetComponent<MyGarden>();
+            PlantData tree = new PlantData();
             if (this.treeName.text.Equals(""))
             {
-                this.ShowError("Du musst einen Namen für den ersten Setzling auswählen!");
+                this.showError("Du musst einen Namen für den ersten Setzling auswählen!");
                 Debug.LogError("No treenname given");
                 return;
             }
 
             this.hideError();
 
-            garden.tree.GetComponent<TreePlant>().Name = this.treeName.text;
-            SavegameManager.SaveTree(garden.tree.GetComponent<TreePlant>());
-            this.panel3.SetActive(false);
-            this.panel4.SetActive(true);
-        }
-
-        public void SaveHomeLocation()
-        {
-            this.hideError();
-            this.panel4.SetActive(false);
-            SetupCompleted();
+            tree.name = this.treeName.text;
+            tree.evolutionLevel = 0;
+            SavegameManager.SaveTree(tree);
+            this.treePanel.SetActive(false);
+            this.homebasePanel.SetActive(true);
         }
 
         private void SetupCompleted()
@@ -146,23 +158,39 @@ namespace Managers
             sceneLoading.LoadScene(3);
         }
 
-        public void setHomeGPSPosition()
+        /// <summary>
+        /// Skipps the setting of a home base.
+        /// </summary>
+        public void proceedFromLocationPanel()
+        {
+            this.hideError();
+            this.homebasePanel.SetActive(false);
+            SetupCompleted();
+        }
+
+        /// <summary>
+        /// Tries to save the home location.
+        /// First checks if the user is connected to a WLAN. If not an error is displayed.
+        /// If WLAN connection is confirmed the current GPS location is stored as the home location
+        /// </summary>
+        public void SaveHomeLocation()
         {
             if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
             {
-                this.ShowError("Du bist mit keinem WLAN verbunden. Bist du wirklich zuhause du Lümmel?");
+                this.showError("Du bist mit keinem WLAN verbunden. Bist du wirklich zuhause du Lümmel?");
                 return;
             }
             
             var gps = gameObject.GetComponent<GPS_Tracking>();
-            var player = gameObject.GetComponent<Player>();
             Debug.Log("gps setzen");
             Debug.Log(gps.GetLatitude());
             Debug.Log(gps.GetLongitude());
             
             player.lat = gps.GetLatitude();
             player.lon = gps.GetLongitude();
-            SaveHomeLocation();
+            SavegameManager.SavePlayer(player);
+
+            proceedFromLocationPanel();
         }
 
         private void hideError()
@@ -170,7 +198,7 @@ namespace Managers
             this.errorPanel.SetActive(false);
         }
 
-        private void ShowError(string errorText)
+        private void showError(string errorText)
         {
             this.errorText.text = errorText;
             this.errorPanel.SetActive(true);
