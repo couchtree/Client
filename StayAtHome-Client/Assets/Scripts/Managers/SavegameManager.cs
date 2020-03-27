@@ -20,10 +20,17 @@ namespace Managers
             PlayerPrefs.Save();
         }
 
-        public static void SaveTree(TreeData treePlant)
+        public static void SaveTree(PlantData treePlant)
         {
             PlayerPrefs.SetString("tree.name", treePlant.name);
             PlayerPrefs.SetInt("tree.evolution", treePlant.evolutionLevel);
+            PlayerPrefs.Save();
+        }
+
+        public static void SaveNormalPlant(PlantData normalPlant, string identifier)
+        {
+            PlayerPrefs.SetString(identifier + ".name", normalPlant.name);
+            PlayerPrefs.SetInt(identifier + ".evolution", normalPlant.evolutionLevel);
             PlayerPrefs.Save();
         }
 
@@ -58,13 +65,30 @@ namespace Managers
             }
         }
 
-        public static bool LoadTree(out TreeData tree)
+        public static bool LoadTree(out PlantData tree)
         {
-            tree = new TreeData();
+            tree = new PlantData();
             if (PlayerPrefs.HasKey("tree.name") && PlayerPrefs.HasKey("tree.evolution"))
             {
                 tree.name = PlayerPrefs.GetString("tree.name");
                 tree.evolutionLevel = PlayerPrefs.GetInt("tree.evolution");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool LoadNormalPlant(out PlantData normalPlant, string identifier)
+        {
+            normalPlant = new PlantData();
+            string nameKey = identifier + ".name";
+            string evolutionKey = identifier + ".evoluation";
+            if (PlayerPrefs.HasKey(nameKey) && PlayerPrefs.HasKey(evolutionKey))
+            {
+                normalPlant.name = PlayerPrefs.GetString(nameKey);
+                normalPlant.evolutionLevel = PlayerPrefs.GetInt(evolutionKey);
                 return true;
             }
             else

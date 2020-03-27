@@ -117,7 +117,7 @@ namespace Managers
 
         public void SaveTreeName()
         {
-            TreeData tree = new TreeData();
+            PlantData tree = new PlantData();
             if (this.treeName.text.Equals(""))
             {
                 this.ShowError("Du musst einen Namen für den ersten Setzling auswählen!");

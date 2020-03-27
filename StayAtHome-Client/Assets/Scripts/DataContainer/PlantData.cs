@@ -1,6 +1,6 @@
 ﻿namespace DataContainer
 {
-    public class TreeData
+    public class PlantData
     {
         public string name;
         public int evolutionLevel;
