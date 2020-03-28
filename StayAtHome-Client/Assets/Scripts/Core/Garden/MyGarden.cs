@@ -19,6 +19,7 @@ namespace Core.Garden
         public List<APlant> plants;
 
         public GardenData gardenData;
+        public TextMeshProUGUI gardenName;
 
         // Move these to wherever you see fit..
         public int Health { get; private set; } = 100;
@@ -41,6 +42,7 @@ namespace Core.Garden
         {
             this.plants = new List<APlant>();
             SavegameManager.LoadGarden(out this.gardenData);
+            this.gardenName.text = this.gardenData.name;
         }
     }
 }

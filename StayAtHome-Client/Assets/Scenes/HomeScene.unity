@@ -1218,6 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plants: []
+  gardenName: {fileID: 1730610882}
 --- !u!4 &124755003
 Transform:
   m_ObjectHideFlags: 0
@@ -6062,7 +6063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bb3d5cff83cfd4e9104924760eb2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableDebugging: 0
   homeLat: {fileID: 1731340155}
   homeLon: {fileID: 911851607}
   currentLat: {fileID: 828106727}
@@ -10804,7 +10804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c2d8b6aa805c429277f3c8a371555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceID: 
 --- !u!4 &1531322627
 Transform:
   m_ObjectHideFlags: 0
