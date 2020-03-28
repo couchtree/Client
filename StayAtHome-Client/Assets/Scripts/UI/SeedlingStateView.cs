@@ -19,19 +19,19 @@ public class SeedlingStateView : MonoBehaviour
 
     private Player player;
 
-    public int happyModeThreshold; // score above this value is treated as happy mode
-    public int sadModeThreshold; // score below this value is treated as sad mode
+    public readonly int happyModeThreshold = 75; // score above this value is treated as happy mode
+    public readonly int sadModeThreshold = 40; // score below this value is treated as sad mode
 
     // Start is called before the first frame update
     void Start()
     {
-        player = Player.Instance;
+        player = Player.Instance; // is null
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.score < sadModeThreshold)
+        /*if (player.score < sadModeThreshold)
         {
             seedlingSmiley.sprite = sadMode;
             seedlingBackground.sprite = sadBackground;
@@ -45,6 +45,6 @@ public class SeedlingStateView : MonoBehaviour
         {
             seedlingSmiley.sprite = neutralMode;
             seedlingBackground.sprite = neutralBackground;
-        }
+        }*/
     }
 }

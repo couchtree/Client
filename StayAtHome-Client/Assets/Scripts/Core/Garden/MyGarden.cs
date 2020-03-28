@@ -14,6 +14,8 @@ namespace Core.Garden
 
         public TextMeshProUGUI treeNameField;
 
+        public TextMeshProUGUI gardenName;
+
         public string Name { get; set; }
 
         // Move these to wherever you see fit..
@@ -49,6 +51,7 @@ namespace Core.Garden
             if (PlayerPrefs.HasKey("garden.name"))
             {
                 this.Name = PlayerPrefs.GetString("garden.name");
+                this.gardenName.text = "Garden " + this.Name;
             }
 
             if (PlayerPrefs.HasKey("tree.name") && PlayerPrefs.HasKey("tree.evolution"))
