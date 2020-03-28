@@ -4327,7 +4327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ec71a06784b1547811c21872fdf570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateDebugging: 1
+  activateDebugging: 0
   playerName: {fileID: 1971825229}
   gardenName: {fileID: 1228037623}
   treeName: {fileID: 1904053335}

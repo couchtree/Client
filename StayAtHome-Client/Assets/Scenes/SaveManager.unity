@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2676447d6c4bc487622ab3df97c232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plants: []
+  gardenName: {fileID: 0}
 --- !u!4 &432052960
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c766de40ac753294abbd56b1bd8b7f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
   distance: 0
 --- !u!4 &633218387
 Transform:
@@ -245,7 +246,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
