@@ -98,6 +98,19 @@ namespace Core.Map
             return false;
         }
 
+        /// <summary>
+        /// Change the player's home base
+        /// </summary>
+        /// <param name="lat">current lateral coordinate</param>
+        /// <param name="lon">current longitudal coordinate</param>
+        public void changeHomeBase(float lat, float lon)
+        {
+            this.Lat = lat;
+            this.Lon = lon;
+            
+            this.SavePlayer();
+        }
+
         private void LoadPlayer()
         {
             SavegameManager.LoadPlayer(out this.data);

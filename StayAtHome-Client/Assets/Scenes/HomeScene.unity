@@ -1805,8 +1805,6 @@ GameObject:
   - component: {fileID: 193757363}
   - component: {fileID: 193757365}
   - component: {fileID: 193757364}
-  - component: {fileID: 193757367}
-  - component: {fileID: 193757366}
   m_Layer: 5
   m_Name: SaveLocationButton
   m_TagString: Untagged
@@ -1831,7 +1829,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 407, y: 0}
-  m_SizeDelta: {x: 135, y: 62}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193757364
 MonoBehaviour:
@@ -1851,7 +1849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9345d4433d3b9d1459b7370b066d56a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba6165b8e4bdb8d4ba24770715b2d0b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1869,76 +1867,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193757362}
   m_CullTransparentMesh: 0
---- !u!114 &193757366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193757362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 516347630431fec49a8c01ba5821de34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onSprite: {fileID: 21300000, guid: 9345d4433d3b9d1459b7370b066d56a4, type: 3}
-  offSprite: {fileID: 21300000, guid: 86289135be5d6cf4091caab3c7bc1496, type: 3}
-  image: {fileID: 193757364}
-  defaultState: 1
---- !u!114 &193757367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193757362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 193757364}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 193757366}
-        m_MethodName: toggleImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &219969340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4458,7 +4386,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum
+  m_text: Reset your previous home location
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ccfb6b88ef895b49af9ff8111f4e108, type: 2}
   m_sharedMaterial: {fileID: -8170515890221674509, guid: 9ccfb6b88ef895b49af9ff8111f4e108,
@@ -4528,10 +4456,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 428822840}
-    characterCount: 11
+    characterCount: 33
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -4653,6 +4581,7 @@ GameObject:
   - component: {fileID: 471503472}
   - component: {fileID: 471503474}
   - component: {fileID: 471503473}
+  - component: {fileID: 471503475}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -4720,6 +4649,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471503471}
   m_CullTransparentMesh: 0
+--- !u!114 &471503475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471503471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbaa287e5094e65a922b5b6a121b885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushmessages: {fileID: 1087802097}
+  gps: {fileID: 705401884}
+  saveHomeLocation: {fileID: 1910565866}
+  player: {fileID: 1103470379}
+  gpsTracking: {fileID: 1246468234}
 --- !u!1 &481239383
 GameObject:
   m_ObjectHideFlags: 0
@@ -5986,6 +5932,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 705401884}
         m_MethodName: toggleImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 471503475}
+        m_MethodName: ToggleGPS
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7914,6 +7871,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1087802097}
         m_MethodName: toggleImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 471503475}
+        m_MethodName: TogglePushMessages
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13604,6 +13572,7 @@ GameObject:
   - component: {fileID: 1910565863}
   - component: {fileID: 1910565865}
   - component: {fileID: 1910565864}
+  - component: {fileID: 1910565866}
   m_Layer: 5
   m_Name: SaveLocationGroup
   m_TagString: Untagged
@@ -13669,6 +13638,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910565862}
   m_CullTransparentMesh: 0
+--- !u!114 &1910565866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910565862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1910565864}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 471503475}
+        m_MethodName: SetNewHomeLocation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1915910352
 GameObject:
   m_ObjectHideFlags: 0
@@ -13880,7 +13903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save Current Location
+  m_text: Set home location
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6497b4e25dc4d349b5387bfb5005976, type: 2}
   m_sharedMaterial: {fileID: 9017704433613355039, guid: f6497b4e25dc4d349b5387bfb5005976,
@@ -13950,7 +13973,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1957172934}
-    characterCount: 21
+    characterCount: 17
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
