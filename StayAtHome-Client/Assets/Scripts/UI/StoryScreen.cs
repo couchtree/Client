@@ -34,10 +34,6 @@ namespace UI
                 "Eine Blattlausplage bedroht all unsere Pflanzen. Nur wenn jeder zu Hause einen eigenen kleinen Garten anlegt, diesen pflegt und beschützt, kann die Krise gut überstanden werden. Sei ein Gärtner, sei ein Held.");
             text.SetText(storyParts[storyIndex]);
             storyIndex++;
-            if (PlayerPrefs.HasKey("story.startstory.read") && PlayerPrefs.GetInt("story.startstory.read") == 1)
-            {
-                switchToNextScene();
-            }
         }
 
         /// <summary>

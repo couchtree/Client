@@ -19,7 +19,25 @@ namespace UI
             //LoadScene(2);
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
-                LoadScene(1, 2.8f);
+                if (PlayerPrefs.HasKey("story.startstory.read") && PlayerPrefs.GetInt("story.startstory.read") == 1)
+                {
+                    if (PlayerPrefs.HasKey("player.name") || PlayerPrefs.GetString("player.name") != "")
+                    {
+                        LoadScene(3, 2.8f);
+                    }
+                    else if (PlayerPrefs.HasKey("garden.name") || PlayerPrefs.GetString("garden.name") != "")
+                    {
+                        LoadScene(3, 2.8f);
+                    }
+                    else
+                    {
+                        LoadScene(2, 2.8f);
+                    }
+                }
+                else
+                {
+                    LoadScene(1, 2.8f);
+                }
             }
         }
 

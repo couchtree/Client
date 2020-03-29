@@ -547,7 +547,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -606,7 +606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20ef67551d3e4811a4fbbef7d439084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 708964880}
 --- !u!114 &972367343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,8 +630,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc24a503f1e2314e9ff199c8f6ebba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gps: {fileID: 0}
+  player: {fileID: 0}
   maxDistanceFromHome: 10
   period: 0.1
+  scoreSteps: 10
 --- !u!114 &972367345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c766de40ac753294abbd56b1bd8b7f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
   distance: 0
 --- !u!114 &972367347
 MonoBehaviour:
@@ -671,7 +672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c2d8b6aa805c429277f3c8a371555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceID: 
 --- !u!1 &1255624372
 GameObject:
   m_ObjectHideFlags: 0
