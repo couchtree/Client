@@ -8,7 +8,7 @@ namespace Managers
     /// </summary>
     public interface IXpProvider
     {
-        public int getCurrentXP();
+        int getCurrentXP();
     }
 
     /// <summary>
