@@ -77,7 +77,7 @@ namespace Core
         {
             if (Time.time > nextActionTime && isInitialized)  
             {
-                nextActionTime += period;
+                nextActionTime = Time.time + period;
                 RequestUpdate();
             }
         }
